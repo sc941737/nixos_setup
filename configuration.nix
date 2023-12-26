@@ -42,10 +42,32 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-  # Configure keymap in X11
+  # Configure X11, DM, WM
   services.xserver = {
+    enable = true;
+    dpi = 96;
     layout = "us";
     xkbVariant = "";
+    displayManager = {
+      lightdm.enable = true;
+      autoLogin = {
+        enable = true;
+        user = "d";
+      };
+    };
+    windowManager.dwm = {
+      enable = true;
+      package = pkgs.dwm.overrideAttrs {
+        src = /home/d/repos/dwm;
+      };
+    };
+    libinput = {
+      enable = true;
+      touchpad = {
+        accelSpeed = "1";
+        disableWhileTyping = true;
+      };
+    };
   };
 
   # Automount drives
@@ -71,6 +93,7 @@
       # Privacy
       mullvad-vpn
       # Convenience
+      autojump
       neofetch
       fzf
       speedtest-cli
@@ -80,8 +103,11 @@
       lm_sensors
       btop
       meld
+      flameshot
       # Software development
       jetbrains-toolbox
+      neovim
+      gcc
     ];
   };
 
@@ -89,15 +115,17 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.variables = {
-    EDITOR = "vim";
+    GDK_SCALE="2";
+    EDITOR = "nvim";
     BROWSER = "brave";
-    TERMINAL = "st";
+    TERMINAL = "kitty";
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Basic utils
+    kitty
     udiskie
     vim_configurable 
     wget
@@ -107,6 +135,7 @@
     libnotify
     xclip
     p7zip
+    fontconfig
     # Filesystem formatting tools
     gparted
     exfat
@@ -114,6 +143,27 @@
     # Sound
     pipewire
     pavucontrol
+    # NixOS
+    # Package managers
+    flatpak
+    # DWM
+    harfbuzz
+    (dmenu.overrideAttrs {
+      src = /home/d/repos/dmenu;
+    })
+    (st.overrideAttrs (oldAttrs: rec {
+      buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
+      src = /home/d/repos/st;
+    }))
+    xorg.libX11
+    xorg.libX11.dev
+    xorg.libxcb
+    xorg.libXft
+    xorg.libXinerama
+    xorg.xinit
+    xorg.xinput
+    gcc
+    gnumake
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
