@@ -66,6 +66,21 @@
     # EDITOR = "emacs";
   };
 
+  programs = {
+    bash = {
+      enable = true;
+#      shellAliases = {
+#        ll = "ls -l";
+#        ".." = "cd ..";
+#      };
+      bashrcExtra = ''
+        . /home/d/repos/nixos_setup/.bashrc
+      '';
+    };
+  };
+
+#  home.file.".bashrc".source = ./.bashrc;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
