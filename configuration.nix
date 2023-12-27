@@ -113,6 +113,8 @@
       lsd
       bat
       gdu
+      ripgrep
+      fzf
       meld
       flameshot
       # Software development
@@ -140,6 +142,7 @@
     udiskie
     vim_configurable 
     wget
+    curl
     git
     git-lfs
     ed
