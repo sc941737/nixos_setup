@@ -24,6 +24,18 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
+  };
+  services.blueman.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/London";
 
@@ -72,7 +84,13 @@
 
   # Enable sound
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraConfig = "
+      load-module module-switch-on-connect
+    ";
+  };
 
   # Automount drives
   services.gvfs.enable = true;
@@ -83,6 +101,12 @@
   services.mullvad-vpn = {
     enable = true;
     enableExcludeWrapper = false;
+  };
+
+  # GTK
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -192,6 +216,7 @@
       buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
       src = /home/d/repos/st;
     }))
+    xdg-desktop-portal-gtk
     xorg.libX11
     xorg.libX11.dev
     xorg.libxcb
@@ -232,3 +257,4 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
+
