@@ -79,6 +79,12 @@
   services.udisks2.enable = true;
   services.devmon.enable = true;
 
+  # VPN
+  services.mullvad-vpn = {
+    enable = true;
+    enableExcludeWrapper = false;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.d = {
     isNormalUser = true;
