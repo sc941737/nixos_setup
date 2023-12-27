@@ -97,8 +97,11 @@
       librewolf
       firefox
       mullvad-browser
-      # Privacy
-      mullvad-vpn
+      # Communication
+      slack
+      telegram-desktop
+      signal-desktop
+      discord
       # Convenience
       autojump
       neofetch
@@ -153,6 +156,8 @@
     # Network
     networkmanagerapplet
     networkmanager_dmenu
+    # Privacy
+    mullvad-vpn
     # Email todo
     # Filesystem formatting tools
     gparted
