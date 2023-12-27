@@ -69,10 +69,6 @@
   programs = {
     bash = {
       enable = true;
-#      shellAliases = {
-#        ll = "ls -l";
-#        ".." = "cd ..";
-#      };
       bashrcExtra = ''
         . /home/d/repos/nixos_setup/.bashrc
       '';
