@@ -70,6 +70,10 @@
     };
   };
 
+  # Enable sound
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+
   # Automount drives
   services.gvfs.enable = true;
   services.udisks2.enable = true;
@@ -87,9 +91,6 @@
       librewolf
       firefox
       mullvad-browser
-      # File manager
-      ranger
-      ueberzugpp
       # Privacy
       mullvad-vpn
       # Convenience
@@ -102,6 +103,10 @@
       tldr
       lm_sensors
       btop
+      htop
+      lsd
+      bat
+      gdu
       meld
       flameshot
       # Software development
@@ -136,17 +141,33 @@
     xclip
     p7zip
     fontconfig
+    # Network
+    networkmanagerapplet
+    networkmanager_dmenu
+    # Email todo
     # Filesystem formatting tools
     gparted
     exfat
     exfatprogs
-    # Sound
+    # File manager
+    ranger
+    ueberzugpp
+    # Documents
+    zathura
+    # Audio
     pipewire
     pavucontrol
-    # NixOS
+    mpd
+    # Images
+    sxiv
+    # Video
+    mpv
+    ffmpeg
     # Package managers
     flatpak
     # DWM
+    xwallpaper
+    xcompmgr
     harfbuzz
     (dmenu.overrideAttrs {
       src = /home/d/repos/dmenu;
