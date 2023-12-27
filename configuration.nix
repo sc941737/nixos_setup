@@ -97,6 +97,8 @@
       librewolf
       firefox
       mullvad-browser
+      # Media
+      freetube
       # Communication
       slack
       telegram-desktop
