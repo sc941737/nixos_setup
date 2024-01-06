@@ -219,6 +219,9 @@
       buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
       src = /home/d/repos/st;
     }))
+    (dwmblocks.overrideAttrs {
+      src = /home/d/repos/dwmblocks;
+    })
     xdg-desktop-portal-gtk
     xorg.libX11
     xorg.libX11.dev
