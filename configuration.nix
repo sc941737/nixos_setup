@@ -147,6 +147,8 @@
       meld
       flameshot
       # Software development
+      cargo
+      nodejs
       jetbrains-toolbox
       neovim
       gcc
@@ -178,6 +180,7 @@
     libnotify
     xclip
     p7zip
+    unzip
     fontconfig
     # Network
     networkmanagerapplet
@@ -257,4 +260,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
+
+
+
 
