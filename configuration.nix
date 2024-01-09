@@ -177,11 +177,13 @@
     git
     git-lfs
     ed
-    libnotify
     xclip
     p7zip
     unzip
     fontconfig
+    # Notifications
+    libnotify
+    dunst
     # Network
     networkmanagerapplet
     networkmanager_dmenu

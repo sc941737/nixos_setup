@@ -73,6 +73,21 @@
         . /home/d/repos/nixos_setup/.bashrc
       '';
     };
+    kitty = {
+      enable = true;
+      font = {
+        size = 16;
+        name = "DejaVu Sans";
+      };
+      settings = {
+        scrollback_lines = 10000;
+        enable_audio_bell = false;
+      };
+      keybindings = {
+        "alt+c" = "copy_to_clipboard";
+        "alt+v" = "paste_from_clipboard";
+      };
+    };
   };
 
 #  home.file.".bashrc".source = ./.bashrc;
