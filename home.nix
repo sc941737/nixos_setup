@@ -66,6 +66,23 @@
     # EDITOR = "emacs";
   };
 
+  services.picom = {
+    enable = true;
+    shadow = false;
+    fade = false;
+    opacityRules = [
+      "90:class_g = 'kitty' && focused"
+      "80:class_g = 'kitty' && !focused"
+    ];
+    vSync = true;
+    backend = "glx";
+    settings = {
+      blur = {
+        method = "dual_kawase";
+      };
+    };
+  };
+
   programs = {
     bash = {
       enable = true;
@@ -80,6 +97,7 @@
         name = "DejaVu Sans";
       };
       settings = {
+        confirm_os_window_close = -1;
         scrollback_lines = 10000;
         enable_audio_bell = false;
       };
