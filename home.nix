@@ -66,6 +66,7 @@
     # EDITOR = "emacs";
   };
 
+  # X compositor
   services.picom = {
     enable = true;
     shadow = false;
@@ -84,12 +85,14 @@
   };
 
   programs = {
+    # Shells
     bash = {
       enable = true;
       bashrcExtra = ''
         . /home/d/repos/nixos_setup/.bashrc
       '';
     };
+    # Terminal
     kitty = {
       enable = true;
       font = {
@@ -107,6 +110,21 @@
         "alt+v" = "paste_from_clipboard";
       };
     };
+    # Version control
+    git = {
+      enable = true;
+      userEmail = "sergiusz.cichosz@proton.me";
+      userName = "sc941737";
+      attributes = [
+        "*.pdf diff=pdf"
+      ];
+      ignores = [
+        "*~"
+        "*.swp"
+      ];
+      lfs.enable = true;
+    };
+    # CLI tools
     autojump.enable = true;
   };
 
