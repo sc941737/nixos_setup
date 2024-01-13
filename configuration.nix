@@ -118,6 +118,11 @@
     config.common.default = "*"; # Temporary fallback to old behaviour pre v1.7, should specify portal backend
   };
 
+  services.locate = {
+    enable = true;
+    interval = "hourly";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.d = {
     isNormalUser = true;
@@ -131,36 +136,33 @@
       firefox
       mullvad-browser
       # Media
-      freetube
+      freetube # YT client
       # Communication
       slack
       telegram-desktop
       signal-desktop
       discord
       # Convenience
-      autojump
-      neofetch
-      fzf
-      speedtest-cli
-      progress
-      trash-cli
-      tldr
-      lm_sensors
-      btop
-      htop
-      lsd
-      bat
-      gdu
-      ripgrep
-      fzf
-      meld
-      flameshot
+      autojump # Better 'cd'
+      neofetch # Show system info
+      speedtest-cli # Internet speed test
+      progress # Shows progress of CLI data transfer
+      trash-cli # Trash functionality in CLI
+      tldr # Better 'man'
+      lm_sensors # Monitoring sensors
+      btop # Better 'top'
+      htop # Better 'top'
+      lsd # Better 'ls'
+      bat # Better 'cat'
+      gdu # Disk usage analyser
+      ripgrep # Better 'grep'
+      fzf # Fuzzy finder
+      meld # Visual diff and merge tool
       # Software development
-      cargo
-      nodejs
-      jetbrains-toolbox
-      neovim
-      gcc
+      cargo # Rust package manager
+      nodejs # JS package manager
+      jetbrains-toolbox # Jetbrains IDEs
+      neovim # Text editor
     ];
   };
 
@@ -183,7 +185,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Basic utils
-    kitty
+    kitty # Terminal with GPU acceleration
     udiskie
     vim_configurable 
     wget
@@ -199,7 +201,7 @@
     fontconfig
     # Notifications
     libnotify
-    dunst
+    dunst # Notification daemon
     # Network
     networkmanagerapplet
     networkmanager_dmenu
@@ -211,19 +213,22 @@
     exfat
     exfatprogs
     # File manager
-    ranger
-    ueberzugpp
+    ranger # TUI file manager
+    ueberzugpp # Allows ranger to view images
     # Documents
-    zathura
+    zathura # Pdf viewer
     # Audio
     pipewire
     pavucontrol
-    mpd
+    mpd # CLI audio player
+    ncmpcpp # TUI mpd client
     # Images
-    sxiv
+    sxiv # Image viewer
+    flameshot # Screenshots
+    imagemagick # Image editing
     # Video
-    mpv
-    ffmpeg
+    mpv # Video player
+    ffmpeg # CLI video editing
     # Package managers
     flatpak
     # DWM

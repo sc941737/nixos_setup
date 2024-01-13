@@ -107,6 +107,7 @@
         "alt+v" = "paste_from_clipboard";
       };
     };
+    autojump.enable = true;
   };
 
 #  home.file.".bashrc".source = ./.bashrc;
