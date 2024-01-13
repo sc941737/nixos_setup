@@ -54,6 +54,12 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
+  # OpenGL setup
+  hardware.opengl.extraPackages = with pkgs; [
+    rocmPackages.clr.icd # OpenCL
+  ];
+  hardware.opengl.enable = true;
+
   # Configure X11, DM, WM
   services.xserver = {
     enable = true;
@@ -66,7 +72,9 @@
         enable = true;
         user = "d";
       };
+      sessionCommands = "dwmblocks &";
     };
+    desktopManager.wallpaper.mode = "scale";
     windowManager.dwm = {
       enable = true;
       package = pkgs.dwm.overrideAttrs {
@@ -107,6 +115,7 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*"; # Temporary fallback to old behaviour pre v1.7, should specify portal backend
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -165,6 +174,11 @@
     TERMINAL = "kitty";
   };
 
+  # Font config
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "SourceCodePro" "Hack" ]; })
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -180,6 +194,8 @@
     xclip
     p7zip
     unzip
+    # Fonts
+    nerdfonts
     fontconfig
     # Notifications
     libnotify
@@ -232,6 +248,7 @@
     xorg.libXinerama
     xorg.xinit
     xorg.xinput
+    glxinfo
     gcc
     gnumake
   ];

@@ -94,12 +94,13 @@
       enable = true;
       font = {
         size = 16;
-        name = "DejaVu Sans";
+        name = "Hack";
       };
       settings = {
         confirm_os_window_close = -1;
         scrollback_lines = 10000;
         enable_audio_bell = false;
+        linux_display_server = "x11";
       };
       keybindings = {
         "alt+c" = "copy_to_clipboard";
