@@ -63,7 +63,17 @@
   #  /etc/profiles/per-user/d/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    # DMENU_BLUETOOTH_LAUNCHER = "dmenu -c -i -l 20";
+  };
+
+  home.sessionPath = [
+    "$HOME/repos/nixos_setup/scripts"
+  ];
+
+  home.shellAliases = {
+    sys-rebuild = "sudo nixos-rebuild switch --flake ~/repos/nixos_setup --impure";
+    home-rebuild = "home-manager switch --flake ~/repos/nixos_setup --impure";
+    full-rebuild = "sys-rebuild && home-rebuild";
   };
 
   # X compositor
@@ -72,8 +82,8 @@
     shadow = false;
     fade = false;
     opacityRules = [
-      "90:class_g = 'kitty' && focused"
-      "80:class_g = 'kitty' && !focused"
+      "80:class_g = 'kitty' && focused"
+      "70:class_g = 'kitty' && !focused"
     ];
     vSync = true;
     backend = "glx";
@@ -129,6 +139,7 @@
   };
 
 #  home.file.".bashrc".source = ./.bashrc;
+  home.file.".config/networkmanager-dmenu/config.ini".source = /home/d/repos/nixos_setup/nm-dmenu-config.ini;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

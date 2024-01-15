@@ -34,7 +34,6 @@
       };
     };
   };
-  services.blueman.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -118,9 +117,12 @@
     config.common.default = "*"; # Temporary fallback to old behaviour pre v1.7, should specify portal backend
   };
 
+  # Global file search
   services.locate = {
     enable = true;
     interval = "hourly";
+    package = pkgs.mlocate;
+    localuser = null;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -205,6 +207,7 @@
     # Network
     networkmanagerapplet
     networkmanager_dmenu
+    dmenu-bluetooth
     # Privacy
     mullvad-vpn
     # Email todo
