@@ -241,10 +241,6 @@
     (dmenu.overrideAttrs {
       src = /home/d/repos/dmenu;
     })
-    (st.overrideAttrs (oldAttrs: rec {
-      buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
-      src = /home/d/repos/st;
-    }))
     (dwmblocks.overrideAttrs {
       src = /home/d/repos/dwmblocks;
     })
