@@ -76,6 +76,49 @@
     full-rebuild = "sys-rebuild && home-rebuild";
   };
 
+  # Desktop apps
+  xdg.desktopEntries = {
+    bt = {
+      name = "bt";
+      type = "Application";
+      exec = "dmenu-bluetooth -fn Hack-22 -l 30";
+    };
+    network = {
+      name = "network";
+      type = "Application";
+      exec = "networkmanager_dmenu";
+    };
+    files = {
+      name = "files";
+      type = "Application";
+      terminal = true;
+      exec = "kitty -e ranger";
+    };
+    editor = {
+      name = "nvim";
+      type = "Application";
+      exec = "nvim";
+      terminal = true;
+    };
+    btop = {
+      name = "btop";
+      type = "Application";
+      exec = "btop";
+      terminal = true;
+    };
+  };
+  xdg.mimeApps.defaultApplications = {
+    "application/pdf" = [ "zathura.desktop" ];
+    "application/ebup+zip" = [ "zathura.desktop" ];
+    "application/json" = [ "editor.desktop" ];
+    "application/xml" = [ "editor.desktop" ];
+    "text/*" = [ "editor.desktop" ];
+    "image/*" = [ "sxiv.desktop" ];
+    "video/*" = [ "mpv.desktop" ];
+    "audio/*" = [ "mpv.desktop" ]; # todo: Need an audio player
+    # "application/zip" = [ "unzip.desktop" ];
+  };
+
   # X compositor
   services.picom = {
     enable = true;
