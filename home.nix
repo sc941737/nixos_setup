@@ -97,7 +97,7 @@
     editor = {
       name = "nvim";
       type = "Application";
-      exec = "nvim";
+      exec = "kitty -e nvim";
       terminal = true;
     };
     btop = {
