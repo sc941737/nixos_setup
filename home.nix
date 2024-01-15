@@ -91,8 +91,8 @@
     files = {
       name = "files";
       type = "Application";
-      terminal = true;
       exec = "kitty -e ranger";
+      terminal = true;
     };
     editor = {
       name = "nvim";
@@ -103,7 +103,13 @@
     btop = {
       name = "btop";
       type = "Application";
-      exec = "btop";
+      exec = "kitty -e btop";
+      terminal = true;
+    };
+    conf = {
+      name = "conf";
+      type = "Application";
+      exec = "kitty -e nvim \\$HOME/repos/nixos_setup";
       terminal = true;
     };
   };
@@ -125,9 +131,15 @@
     shadow = false;
     fade = false;
     opacityRules = [
-      "80:class_g = 'kitty' && focused"
-      "70:class_g = 'kitty' && !focused"
+      # "80:class_g = 'kitty' && focused"
+      # "70:class_g = 'kitty' && !focused"
+      "100:_NET_WM_STATE@[0]:32a = '_NET_WM_STATE_FULLSCREEN'"
+      "100:_NET_WM_STATE@[0]:32a = '_NET_WM_STATE_MODAL'"
+      "100:_NET_WM_STATE@[0]:32a = '_NET_WM_STATE_ABOVE'"
+      "100:_NET_WM_STATE@[0]:32a = '_NET_WM_STATE_DEMANDS_ATTENTION'"
     ];
+    activeOpacity = 0.8;
+    inactiveOpacity = 0.7;
     vSync = true;
     backend = "glx";
     settings = {
