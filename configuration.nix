@@ -137,6 +137,16 @@
       librewolf
       firefox
       mullvad-browser
+      # Virtualisation
+      wine
+      winetricks
+      qemu_kvm
+      # Games
+      steam
+      steam-tui
+      protonup-qt
+      protontricks
+      lutris
       # Media
       freetube # YT client
       # Communication
