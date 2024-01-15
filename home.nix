@@ -163,6 +163,12 @@
         "alt+v" = "paste_from_clipboard";
       };
     };
+    # Document reader
+    zathura = {
+      options = {
+        selection_clipboard = "clipboard";
+      };
+    };
     # Version control
     git = {
       enable = true;
