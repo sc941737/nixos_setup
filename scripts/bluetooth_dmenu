@@ -1,7 +1,6 @@
-#!/bin/bash
-
+#!/run/current-system/sw/bin/bash
 set_defaults() {
-    [ -z $BT_MENU_CMD ] && BT_MENU_CMD="dmenu -i -l 30" 
+    [ -z "$BT_MENU_CMD" ] && BT_MENU_CMD="dmenu -i -l 30" 
     [ -z $BT_POWER_AUTO_DISABLE ] && BT_SCAN_AUTO_OFF_DELAY=0
     [ -z $BT_SCAN_AUTO_DISABLE ] && BT_SCAN_AUTO_OFF_DELAY=300
     [ -z $BT_PAIRABLE_AUTO_DISABLE ] && BT_PAIRABLE_AUTO_OFF_DELAY=300
