@@ -174,6 +174,10 @@
       keybindings = {
         "alt+c" = "copy_to_clipboard";
         "alt+v" = "paste_from_clipboard";
+        "alt+k" = "scroll_line_up";
+        "alt+j" = "scroll_line_down";
+        "shift+alt+k" = "scroll_page_up";
+        "shift+alt+j" = "scroll_page_down";
       };
     };
     # Editor
