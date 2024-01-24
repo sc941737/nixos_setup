@@ -176,6 +176,90 @@
         "alt+v" = "paste_from_clipboard";
       };
     };
+    # Editor
+    nixvim = {
+      enable = true;
+      colorschemes.dracula.enable = true;
+      options = {
+        number = true;
+        relativenumber = true;
+        shiftwidth = 4;
+      };
+      globals.mapleader = " ";
+      keymaps = [
+        {
+          action = "<cmd>Telescope live_grep<CR>";
+          key = "<leader>g";
+        }
+      ];
+      extraPlugins = with pkgs.vimPlugins; [
+        {
+          plugin = vim-visual-multi;
+	  # config = "";
+	}
+      ];
+      extraConfigLua = ''
+        require("gitsigns").setup({
+	  _signs_staged_enable = true, -- experimental
+	})
+      '';
+      plugins = {
+        lualine.enable = true; # Fancy indicators in nvim line
+	surround.enable = true; # Add/change/delete surrounding characters
+        telescope = {
+	  enable = true;
+	  extensions.fzf-native.enable = true;
+	}; # Search
+	nvim-tree.enable = true; # File tree column
+	nvim-autopairs.enable = true; # Pairing quotes, brackets etc.
+	auto-save.enable = true; # Auto save changes
+        oil.enable = true; # Buffer-like file system editing
+        treesitter.enable = true;
+	comment-nvim.enable = true; # Easy commenting
+	bufferline.enable = true; # Editor tabs
+	gitsigns.enable = true; # Git integration
+        luasnip.enable = true; # Code snippets
+        nvim-cmp = {
+          enable = true;
+          autoEnableSources = true;
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "path"; }
+            { name = "buffer"; }
+          ];
+	  mapping = {
+	    "<CR>" = "cmp.mapping.confirm({ select = true })";
+	    "<Tab>" = {
+	      action = ''
+	        function(fallback)
+		  if cmp.visible() then
+		    cmp.select_next_item()
+		  else 
+		    fallback()
+		  end
+		end
+	      '';
+	      modes = [ "i" "s" ];
+	    };
+	  };
+        };
+        lsp = {
+          enable = true;
+          servers = {
+            lua-ls.enable = true;
+            nil_ls.enable = true;
+            bashls.enable = true;
+            clangd.enable = true;
+            tsserver.enable = true;
+            html.enable = true;
+            jsonls.enable = true;
+            kotlin-language-server.enable = true;
+            java-language-server.enable = true;
+            clojure-lsp.enable = true;
+          };
+        };
+      };
+    };
     # Document reader
     zathura = {
       options = {
@@ -201,7 +285,7 @@
   };
 
 #  home.file.".bashrc".source = ./.bashrc;
-  home.file.".config/networkmanager-dmenu/config.ini".source = /home/d/repos/nixos_setup/nm-dmenu-config.ini;
+  home.file.".config/networkmanager-dmenu/config.ini".source = ./nm-dmenu-config.ini;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -197,6 +197,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Basic utils
+    nixFlakes
     kitty # Terminal with GPU acceleration
     udiskie
     vim_configurable 
