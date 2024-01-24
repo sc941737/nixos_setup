@@ -179,30 +179,42 @@
     # Editor
     nixvim = {
       enable = true;
+      globals.mapleader = " ";
       colorschemes.dracula.enable = true;
       options = {
         number = true;
         relativenumber = true;
         shiftwidth = 4;
       };
-      globals.mapleader = " ";
+      autoCmd = [
+      	{
+	  event = [ "BufEnter" ];
+	  pattern = [ "*.ms" "*.mm" "*.mom" "*.man" ];
+	  command = "!groff-open-preview %";
+	}
+      	{
+	  event = [ "BufWritePost" ];
+	  pattern = [ "*.ms" "*.mm" "*.mom" "*.man" ];
+	  command = "!groff-compile-preview %";
+	}
+      ];
       keymaps = [
         {
           action = "<cmd>Telescope live_grep<CR>";
           key = "<leader>g";
         }
       ];
+      extraConfigLua = ''
+        require("gitsigns").setup({
+	  _signs_staged_enable = true, -- experimental
+	})
+      '';
       extraPlugins = with pkgs.vimPlugins; [
         {
           plugin = vim-visual-multi;
 	  # config = "";
 	}
       ];
-      extraConfigLua = ''
-        require("gitsigns").setup({
-	  _signs_staged_enable = true, -- experimental
-	})
-      '';
       plugins = {
         lualine.enable = true; # Fancy indicators in nvim line
 	surround.enable = true; # Add/change/delete surrounding characters

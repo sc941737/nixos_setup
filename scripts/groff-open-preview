@@ -1,0 +1,7 @@
+#!/run/current-system/sw/bin/bash
+
+file="$1"
+ext=".${file##*.}"
+tmpfile="/tmp/$(basename "$file" $ext).pdf"
+groff-compile-preview "$file"
+zathura "$tmpfile" &

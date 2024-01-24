@@ -231,6 +231,7 @@
     ueberzugpp # Allows ranger to view images
     ripdrag # Terminal drag and drop
     # Documents
+    groff # Language for writing docs
     zathura # Pdf viewer
     # Audio
     pipewire

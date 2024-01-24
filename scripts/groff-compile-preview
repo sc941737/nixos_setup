@@ -1,0 +1,7 @@
+#!/run/current-system/sw/bin/bash
+
+file="$1"
+ext=".${file##*.}"
+subcmd="-${ext/./}"
+tmpfile="/tmp/$(basename "$file" $ext).pdf"
+groff "$subcmd" "$file" -Tpdf > "$tmpfile"
