@@ -229,6 +229,7 @@
     # File manager
     ranger # TUI file manager
     ueberzugpp # Allows ranger to view images
+    ripdrag # Terminal drag and drop
     # Documents
     zathura # Pdf viewer
     # Audio
