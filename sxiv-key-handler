@@ -1,0 +1,12 @@
+#!/run/current-system/sw/bin/bash
+
+while read file; do
+    case "$1" in
+    "y")
+        echo $file && cat "$file" | xclip -selection clipboard -target "image/png" -i &&
+	    notify-send "$file copied to clipboard" & ;;
+    "Y")
+        echo -n "$file" | xclip -selection clipboard &&
+	    notify-send "$file path copied to clipboard" & ;;
+    esac
+done

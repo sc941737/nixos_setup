@@ -286,6 +286,7 @@
 
 #  home.file.".bashrc".source = ./.bashrc;
   home.file.".config/networkmanager-dmenu/config.ini".source = ./nm-dmenu-config.ini;
+  home.file.".config/sxiv/exec/key-handler".source = ./sxiv-key-handler;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
