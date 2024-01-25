@@ -185,6 +185,7 @@
       enable = true;
       globals.mapleader = " ";
       colorschemes.dracula.enable = true;
+      clipboard.providers.xclip.enable = true;
       options = {
         number = true;
         relativenumber = true;
@@ -202,16 +203,58 @@
      	(groff "VimLeave" "groff-close-preview")
       	(groff "BufWritePost" "groff-compile-preview")
       ];
-      keymaps = [
-        {
-          action = "<cmd>Telescope live_grep<CR>";
-          key = "<leader>g";
-        }
+      keymaps = let
+	lib = pkgs.lib;
+	range = lib.range;
+	altkey = key: "<M-${key}>";
+	kmap = (cmd: key: {
+	  action = "<cmd>${cmd}<CR>";
+	  key = "${key}";
+	});
+	bufferBindings = range: map 
+	    (n: let 
+		s = toString n; 
+	    in kmap "lua switch_buffer(${s})" (altkey s))
+	    range;
+	pkmap = (plugin: cmd: key: kmap "${plugin} ${cmd}" "<leader>${key}");
+        telescope = pkmap "Telescope";
+	gitsigns = pkmap "Gitsigns";
+      in # Lists to be concatenated
+	(bufferBindings (range 1 9)) ++ # Go to tab/buffer with selected ordinal (alt+n)
+      [
+        # Buffer navigation
+	(kmap "bdelete" "<C-w>") # Close tab/buffer
+	(kmap "blast" (altkey (toString 0))) # Go to last tab/buffer
+	(kmap "bnext" "<M-Tab>") # Go to next tab/buffer
+	(kmap "bprev" "<M-S-Tab>") # Go to previous tab/buffer
+	# Telescope
+        (telescope "grep_string" "fs")
+        (telescope "live_grep" "fg")
+        (telescope "find_files" "ff")
+	# Gitsigns
+        (gitsigns "stage_hunk" "hs")
+        (gitsigns "reset_hunk" "hr")
+        (gitsigns "preview_hunk_inline" "hp")
+        (gitsigns "undo_stage_hunk" "hu")
+        (gitsigns "stage_buffer" "hS")
+        (gitsigns "reset_buffer" "hR")
+        (gitsigns "toggle_deleted" "td")
+        (gitsigns "diffthis" "hd")
       ];
       extraConfigLua = ''
         require("gitsigns").setup({
 	  _signs_staged_enable = true, -- experimental
 	})
+	function switch_buffer(bindex)
+	  local len = 0
+	  local bfrs = {}
+	  for i, bfr in ipairs(vim.api.nvim_list_bufs()) do 
+	    if vim.api.nvim_buf_get_option(bfr, 'buflisted') then
+		table.insert(bfrs, bfr) 
+	    end
+	  end
+	  vim.cmd("buffer " .. bfrs[bindex])
+	end
       '';
       extraPlugins = with pkgs.vimPlugins; [
         {
@@ -232,8 +275,12 @@
         oil.enable = true; # Buffer-like file system editing
         treesitter.enable = true;
 	comment-nvim.enable = true; # Easy commenting
-	bufferline.enable = true; # Editor tabs
-	gitsigns.enable = true; # Git integration
+	bufferline = {
+	  enable = true; # Editor tabs
+	  numbers = "ordinal"; # Ensures buffers are numbered in order
+	};
+	gitsigns.enable = true; # Git hunk integration
+	fugitive.enable = true; # Git integration
         luasnip.enable = true; # Code snippets
         nvim-cmp = {
           enable = true;
