@@ -190,17 +190,17 @@
         relativenumber = true;
         shiftwidth = 4;
       };
-      autoCmd = [
-      	{
-	  event = [ "BufEnter" ];
+      autoCmd = let
+	groff = e: cmd: {
+	  event = [ e ];
 	  pattern = [ "*.ms" "*.mm" "*.mom" "*.man" ];
-	  command = "!groff-open-preview %";
-	}
-      	{
-	  event = [ "BufWritePost" ];
-	  pattern = [ "*.ms" "*.mm" "*.mom" "*.man" ];
-	  command = "!groff-compile-preview %";
-	}
+	  command = "!${cmd} %";
+	};
+      in [
+     	(groff "BufEnter" "groff-open-preview")
+     	(groff "BufLeave" "groff-close-preview")
+     	(groff "VimLeave" "groff-close-preview")
+      	(groff "BufWritePost" "groff-compile-preview")
       ];
       keymaps = [
         {
