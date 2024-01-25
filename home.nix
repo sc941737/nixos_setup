@@ -357,6 +357,7 @@
   home.file.".config/networkmanager-dmenu/config.ini".source = ./nm-dmenu-config.ini;
   home.file.".config/sxiv/exec/key-handler".source = ./sxiv-key-handler;
   home.file.".config/ranger/rc.conf".source = ./ranger-rc.conf;
+  home.file.".config/ranger/rifle.conf".source = ./ranger-rifle.conf;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
