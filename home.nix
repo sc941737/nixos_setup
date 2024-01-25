@@ -95,6 +95,12 @@
       exec = "kitty -e ranger";
       terminal = true;
     };
+    calendar = {
+      name = "calendar";
+      type = "Application";
+      exec = "kitty -e calcure";
+      terminal = true;
+    };
     editor = {
       name = "nvim";
       type = "Application";

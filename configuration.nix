@@ -245,6 +245,8 @@
     # Video
     mpv # Video player
     ffmpeg # CLI video editing
+    # Date/time
+    calcure
     # Package managers
     flatpak
     # DWM
