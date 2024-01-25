@@ -1,0 +1,41 @@
+#!/run/current-system/sw/bin/bash
+
+max_height=480
+win_height=28
+win_width=28
+icon_size=28
+
+for arg in "$@"; do
+    case $1 in
+	--input-copy) 
+	    ripdrag -t -a -r | xargs cp -t "$2/" &&
+		notify-send "Files copied to $2"
+	    exit
+	    ;;
+	--input-move) 
+	    ripdrag -t -a -r | xargs mv -t "$2/" &&
+		notify-send "Files moved to $2"
+	    exit
+	    ;;
+	*) break ;;
+    esac
+done
+
+case 1 in
+    $(( $# == 1 ))) # Open drag and drop window with just the file icon. Closes on drop.
+	win_height=62
+	win_width=48
+	icon_size=48
+	extra_args="-d -i -s $icon_size"
+	;;
+    $(( $# > 1 ))) # Open drag and drop window with icons and names.
+	win_height=$(( $# * 28 )) 
+	extra_args="-a"
+	;;
+    $(( $# > 17 ))) # Open drag and drop window with icons and names.
+	win_height=$max_height 
+	extra_args="-a"
+	;;
+esac
+	
+ripdrag -n -x $extra_args -W $win_width -H $win_height "$@"
