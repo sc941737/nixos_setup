@@ -172,11 +172,16 @@
       htop # Better 'top'
       lsd # Better 'ls'
       bat # Better 'cat'
-      gdu # Disk usage analyser
+      viddy # Better 'watch'
       ripgrep # Better 'grep'
+      ugrep # Better 'grep' with a TUI
+      redo # Wrap commands from history into a function
+      gdu # Disk usage analyser
       fzf # Fuzzy finder
       meld # Visual diff and merge tool
       # Software development
+      bandwhich # Monitoring network requests
+      so # TUI for StackOverflow and similar
       cargo # Rust package manager
       nodejs # JS package manager
       jetbrains-toolbox # Jetbrains IDEs
@@ -192,6 +197,7 @@
     EDITOR = "nvim";
     BROWSER = "brave";
     TERMINAL = "kitty";
+    MANGAL_READER_PDF="zathura";
   };
 
   # Font config
@@ -209,6 +215,8 @@
     vim_configurable 
     wget
     curl
+    jq
+    fx
     git
     git-lfs
     ed
@@ -307,7 +315,4 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
-
-
-
 
