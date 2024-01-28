@@ -142,13 +142,18 @@
       winetricks
       qemu_kvm
       # Games
+      lutris
       steam
       steam-tui
       protonup-qt
       protontricks
       lutris
       # Media
-      freetube # YT client
+      freetube # YT client GUI
+      ytfzf # YT client TUI
+      ani-cli # Anime client TUI
+      mangal # Manga client TUI
+      mov-cli # Movies and series client TUI
       # Communication
       slack
       telegram-desktop
