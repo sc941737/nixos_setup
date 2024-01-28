@@ -89,6 +89,12 @@
       type = "Application";
       exec = "networkmanager_dmenu";
     };
+    audio = {
+      name = "Audio Settings";
+      type = "Application";
+      exec = "kitty -e pulsemixer";
+      terminal = true;
+    };
     files = {
       name = "File Manager";
       type = "Application";
