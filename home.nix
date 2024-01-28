@@ -114,9 +114,9 @@
       terminal = true;
     };
     conf = {
-      name = "conf";
+      name = "music";
       type = "Application";
-      exec = "kitty -e nvim \\$HOME/repos/nixos_setup";
+      exec = "kitty -e mocp";
       terminal = true;
     };
   };
