@@ -66,28 +66,28 @@ quit                  = Q
 
 # Menu and interface control keys:
 go                    = ENTER
-menu_down             = DOWN
-menu_up               = UP
-menu_page_down        = PAGE_DOWN
-menu_page_up          = PAGE_UP
-menu_first_item       = HOME
-menu_last_item        = END
-search_menu           = g /
+menu_down             = DOWN j
+menu_up               = UP k
+menu_page_down        = PAGE_DOWN J
+menu_page_up          = PAGE_UP K
+menu_first_item       = HOME g
+menu_last_item        = END G
+search_menu           = /
 toggle_read_tags      = f
 toggle_show_time      = ^t
 toggle_show_format    = ^f
-toggle_menu           = TAB
-toggle_layout         = l
-toggle_hidden_files   = H
-show_lyrics           = L
+toggle_menu           = TAB l h
+toggle_layout         = M-l
+toggle_hidden_files   = M-H
+show_lyrics           = M-L
 theme_menu            = T
-help                  = h ?
+help                  = ?
 refresh               = ^r
 reload                = r
 
 # Audio playing and positioning keys:
-seek_forward          = RIGHT
-seek_backward         = LEFT
+seek_forward          = >
+seek_backward         = <
 seek_forward_fast     = ]
 seek_backward_fast    = [
 pause                 = p SPACE
@@ -101,10 +101,10 @@ toggle_mixer          = x
 go_url                = o
 
 # Volume control keys:
-volume_down_1         = <
-volume_up_1           = >
-volume_down_5         = ,
-volume_up_5           = .
+volume_down_1         = ,
+volume_up_1           = .
+volume_down_5         = -
+volume_up_5           = +
 volume_10             = M-1
 volume_20             = M-2
 volume_30             = M-3
@@ -129,17 +129,17 @@ go_to_fast_dir7       = &
 go_to_fast_dir8       = *
 go_to_fast_dir9       = (
 go_to_fast_dir10      = )
-go_to_playing_file    = G
-go_up                 = U
+go_to_playing_file    = M-G
+go_up                 = M-g
 
 # Playlist specific keys:
-add_file              = a
+add_file              = a L
 add_directory         = A
 plist_add_stream      = ^u
-delete_from_playlist  = d
+delete_from_playlist  = d H
 playlist_full_paths   = P
-plist_move_up         = u
-plist_move_down       = j
+plist_move_up         = U
+plist_move_down       = D
 save_playlist         = V
 remove_dead_entries   = Y
 clear_playlist        = C
@@ -158,13 +158,13 @@ hide_message          = M
 
 # Softmixer specific keys:
 toggle_softmixer      = w
-toggle_make_mono      = J
+#toggle_make_mono      = J
 
 # Equalizer specific keys:
-toggle_equalizer      = E
-equalizer_refresh     = e
-equalizer_prev        = K
-equalizer_next        = k
+#toggle_equalizer      = E
+#equalizer_refresh     = e
+#equalizer_prev        = K
+#equalizer_next        = k
 
 # External commands:
 mark_start            = '

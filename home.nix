@@ -362,6 +362,7 @@
   home.file.".config/ranger/rifle.conf".source = ./config/ranger/rifle.conf;
  home.file.".config/BetterDiscord/themes/DarkMatter.theme.css".source = ./config/discord/DarkMatter.theme.css;
   home.file.".moc/config".source = ./config/moc/config;
+  home.file.".moc/keymap".source = ./config/moc/keymap;
   home.file.".moc/themes/black_orange".source = ./config/moc/black_orange;
 
   # Let Home Manager install and manage itself.
