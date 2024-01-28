@@ -235,13 +235,13 @@ SoundDriver = ALSA:JACK:OSS
 #
 # Example:    Theme = laras_theme
 #
-Theme = ~/.moc/themes/black_orange
+Theme = black_orange
 
 # The theme used when running on an xterm.
 #
 # Example:    XTermTheme = transparent-background
 #
-XTermTheme = ~/.moc/themes/black_orange
+XTermTheme = black_orange
 
 # Should MOC try to autoload the default lyrics file for an audio?  (The
 # default lyrics file is a text file with the same file name as the audio
