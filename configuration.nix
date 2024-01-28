@@ -154,6 +154,7 @@
       telegram-desktop
       signal-desktop
       discord
+      betterdiscordctl
       # Convenience
       autojump # Better 'cd'
       neofetch # Show system info

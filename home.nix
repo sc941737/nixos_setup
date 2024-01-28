@@ -360,6 +360,7 @@
   home.file.".config/sxiv/exec/key-handler".source = ./config/sxiv/key-handler;
   home.file.".config/ranger/rc.conf".source = ./config/ranger/rc.conf;
   home.file.".config/ranger/rifle.conf".source = ./config/ranger/rifle.conf;
+  home.file.".config/BetterDiscord/themes/DarkMatter.theme.css" = ./config/discord/DarkMatter.theme.css;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
