@@ -236,9 +236,9 @@
     zathura # Pdf viewer
     # Audio
     pipewire
-    pavucontrol
-    mpd # CLI audio player
-    ncmpcpp # TUI mpd client
+    pulsemixer # Audio settings TUI
+    pavucontrol # Audio settings GUI
+    moc # TUI music player
     # Images
     sxiv # Image viewer
     flameshot # Screenshots
