@@ -80,41 +80,41 @@
   # Desktop apps
   xdg.desktopEntries = {
     bt = {
-      name = "bt";
+      name = "Bluetooth Settings";
       type = "Application";
       exec = "bluetooth_dmenu";
     };
     network = {
-      name = "network";
+      name = "Network Settings";
       type = "Application";
       exec = "networkmanager_dmenu";
     };
     files = {
-      name = "files";
+      name = "File Manager";
       type = "Application";
       exec = "kitty -e ranger";
       terminal = true;
     };
     calendar = {
-      name = "calendar";
+      name = "Calendar";
       type = "Application";
       exec = "kitty -e calcure";
       terminal = true;
     };
     editor = {
-      name = "nvim";
+      name = "Text Editor";
       type = "Application";
       exec = "kitty -e nvim";
       terminal = true;
     };
     btop = {
-      name = "btop";
+      name = "System Monitor";
       type = "Application";
       exec = "kitty -e btop";
       terminal = true;
     };
-    conf = {
-      name = "music";
+    music = {
+      name = "Music Player";
       type = "Application";
       exec = "kitty -e mocp";
       terminal = true;
