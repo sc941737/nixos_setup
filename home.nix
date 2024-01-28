@@ -82,7 +82,7 @@
     bt = {
       name = "bt";
       type = "Application";
-      exec = "dmenu-bluetooth -fn Hack-22 -l 30";
+      exec = "bluetooth_dmenu";
     };
     network = {
       name = "network";
