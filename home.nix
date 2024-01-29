@@ -78,53 +78,25 @@
   };
 
   # Desktop apps
-  xdg.desktopEntries = {
-    bt = {
-      name = "Bluetooth Settings";
+  xdg.desktopEntries = let 
+    app = name: cmd: {
+      name = name;
+      exec = cmd;
       type = "Application";
-      exec = "bluetooth_dmenu";
     };
-    network = {
-      name = "Network Settings";
-      type = "Application";
-      exec = "networkmanager_dmenu";
-    };
-    audio = {
-      name = "Audio Settings";
-      type = "Application";
-      exec = "kitty -e pulsemixer";
+    tui-app = name: cmd: {
+      inherit (app name cmd) name exec type;
       terminal = true;
     };
-    files = {
-      name = "File Manager";
-      type = "Application";
-      exec = "kitty -e ranger";
-      terminal = true;
-    };
-    calendar = {
-      name = "Calendar";
-      type = "Application";
-      exec = "kitty -e calcure";
-      terminal = true;
-    };
-    editor = {
-      name = "Text Editor";
-      type = "Application";
-      exec = "kitty -e nvim";
-      terminal = true;
-    };
-    btop = {
-      name = "System Monitor";
-      type = "Application";
-      exec = "kitty -e btop";
-      terminal = true;
-    };
-    music = {
-      name = "Music Player";
-      type = "Application";
-      exec = "kitty -e mocp";
-      terminal = true;
-    };
+  in {
+    bt = (app "Bluetooth Settings" "bluetooth_dmenu"); 
+    network = (app "Network Settings" "networkmanager_dmenu"); 
+    audio = (tui-app "Audio Settings" "kitty -e pulsemixer");  
+    files = (tui-app "File Manager" "kitty -e ranger");  
+    calendar = (tui-app "Calendar" "kitty -e calcure");  
+    editor = (tui-app "Text Editor" "kitty -e nvim");  
+    btop = (tui-app "System Monitor" "kitty -e btop");  
+    music = (tui-app "Music Player" "kitty -e mocp");  
   };
   xdg.mimeApps.defaultApplications = {
     "application/pdf" = [ "zathura.desktop" ];
