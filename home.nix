@@ -97,6 +97,10 @@
     editor = (tui-app "Text Editor" "kitty -e nvim");  
     btop = (tui-app "System Monitor" "kitty -e btop");  
     music = (tui-app "Music Player" "kitty -e mocp");  
+    # Not usable on their own:
+    zathura = (app "Reader" "zathura");
+    sxiv = (app "Pictures" "sxiv");
+    mpv = (app "Video Player" "mpv");
   };
   xdg.mimeApps.defaultApplications = {
     "application/pdf" = [ "zathura.desktop" ];
@@ -106,7 +110,7 @@
     "text/*" = [ "editor.desktop" ];
     "image/*" = [ "sxiv.desktop" ];
     "video/*" = [ "mpv.desktop" ];
-    "audio/*" = [ "mpv.desktop" ]; # todo: Need an audio player
+    "audio/*" = [ "music.desktop" ]; # todo: Need an audio player
     # "application/zip" = [ "unzip.desktop" ];
   };
 
