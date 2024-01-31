@@ -264,6 +264,7 @@
     # Package managers
     flatpak
     # DWM
+    xdotool
     xwallpaper
     xcompmgr
     harfbuzz
