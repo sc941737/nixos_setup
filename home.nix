@@ -89,7 +89,7 @@
       terminal = true;
     };
   in {
-    bt = (app "Bluetooth Settings" "bluetooth_dmenu"); 
+    bt = (app "Bluetooth Settings" "bash bluetooth_dmenu"); 
     network = (app "Network Settings" "networkmanager_dmenu"); 
     audio = (tui-app "Audio Settings" "kitty -e pulsemixer");  
     files = (tui-app "File Manager" "kitty -e ranger");  

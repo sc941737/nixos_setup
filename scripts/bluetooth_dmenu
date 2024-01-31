@@ -1,4 +1,5 @@
 #!/run/current-system/sw/bin/bash
+
 set_defaults() {
     [ -z "$BT_MENU_CMD" ] && BT_MENU_CMD="dmenu -i -l 30" 
     [ -z $BT_POWER_AUTO_DISABLE ] && BT_SCAN_AUTO_OFF_DELAY=0
@@ -70,7 +71,8 @@ switch_toggle() {
 }
 
 handle_scan_off() {
-    if [ $1 = "scan" ] && [ $2 = "off" ]; then
+    [ $1 = "scan" ] || return 
+    if [ $2 = "off" ]; then
 	device_options=()
 	kill $(pgrep -f "bluetoothctl scan on")
 	exit
@@ -209,7 +211,7 @@ powered_off_menu() {
     local selected_option=$(printf "%s\n" "${powered_off_options[@]}" | ${BT_MENU_CMD[@]} -p "$default_prompt")
     local selected_index=${selected_option%%)*)} 
     case "$selected_index" in
-	1) switch_toggle 1 && main_menu ;;
+	1) switch_toggle 1 ;;
 	2) exit ;;
 	*) exit ;;
     esac
