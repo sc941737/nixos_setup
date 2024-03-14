@@ -221,6 +221,7 @@
         (telescope "live_grep" "fg")
         (telescope "find_files" "ff")
 	# Gitsigns
+        (gitsigns "blame_line" "hb")
         (gitsigns "stage_hunk" "hs")
         (gitsigns "reset_hunk" "hr")
         (gitsigns "preview_hunk_inline" "hp")
