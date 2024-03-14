@@ -230,9 +230,7 @@
     libnotify
     dunst # Notification daemon
     # Network
-    networkmanagerapplet
     networkmanager_dmenu
-    dmenu-bluetooth
     # Privacy
     mullvad-vpn
     # Email todo
