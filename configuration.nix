@@ -77,7 +77,13 @@
     windowManager.dwm = {
       enable = true;
       package = pkgs.dwm.overrideAttrs {
-        src = /home/d/repos/dwm;
+	# src = /home/d/repos/dwm;
+        src = pkgs.fetchFromGitHub {
+	  owner = "sc941737";
+	  repo = "dwm";
+	  rev = "a5a21bdd95f587268f135fe9aa2308290eb49ebb";
+	  sha256 = "sha256-pxeN3RGkOB/QTRzFwyXrouN7SYBqaVjClz/S9iU4jxY=";
+	};
       };
     };
     libinput = {
@@ -265,10 +271,23 @@
     xcompmgr
     harfbuzz
     (dmenu.overrideAttrs {
-      src = /home/d/repos/dmenu;
+      # src = /home/d/repos/dmenu;
+      src = fetchFromGitHub {
+        # installFlags = [ "sysconfdir=$out/etc" "localstatedir=$out/var" ];
+	owner = "sc941737";
+	repo = "dmenu";
+	rev = "04bc4e6dd557a26da12688adb4ffcf3ce16ac859";
+	sha256 = "sha256-/UbjnxECN59tLwliUQDoVEOPL90sorSQYQpCpdq5oyg=";
+      };
     })
     (dwmblocks.overrideAttrs {
-      src = /home/d/repos/dwmblocks;
+      # src = /home/d/repos/dwmblocks;
+      src = fetchFromGitHub {
+	owner = "sc941737";
+	repo = "dwmblocks";
+	rev = "1af342f3a1d66a1295c4e05223cbe623fd8f8628";
+	sha256 = "sha256-bum9mYaFtj4nvzL0bhxqFyr/wuE+9BW/wt+i0m4qh40=";
+      };
     })
     xdg-desktop-portal-gtk
     xorg.libX11
