@@ -339,11 +339,12 @@
 
   # Non-home-manager configs
 #  home.file.".bashrc".source = ./.bashrc;
+  home.file.".bash_aliases".source = ./.bash_aliases;
   home.file.".config/networkmanager-dmenu/config.ini".source = ./config/networkmanager-dmenu/config.ini;
   home.file.".config/sxiv/exec/key-handler".source = ./config/sxiv/key-handler;
   home.file.".config/ranger/rc.conf".source = ./config/ranger/rc.conf;
   home.file.".config/ranger/rifle.conf".source = ./config/ranger/rifle.conf;
- home.file.".config/BetterDiscord/themes/DarkMatter.theme.css".source = ./config/discord/DarkMatter.theme.css;
+  home.file.".config/BetterDiscord/themes/DarkMatter.theme.css".source = ./config/discord/DarkMatter.theme.css;
   home.file.".moc/config".source = ./config/moc/config;
   home.file.".moc/keymap".source = ./config/moc/keymap;
   home.file.".moc/themes/black_orange".source = ./config/moc/black_orange;
