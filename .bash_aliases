@@ -65,3 +65,10 @@ alias gcot='git checkout --theirs'
 alias gcob='git-checkout-last -b'
 alias gmlc='git-merge-last-commits'
 alias git-reset-remote='git fetch origin && git reset --hard origin/$(git branch --show)'
+
+function watch-dir(){
+  inotifywait -q -m -r -e modify,create "$1" | while read DIRECTORY EVENT FILE; do 
+    echo "=========== $DIRECTORY/$FILE ==========" 
+    cat "$DIRECTORY/$FILE" 
+  done
+}
