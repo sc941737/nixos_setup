@@ -201,7 +201,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.variables = {
-    GDK_SCALE="2";
+    GDK_SCALE = "1.5";
     EDITOR = "nvim";
     BROWSER = "brave";
     TERMINAL = "kitty";
@@ -253,6 +253,8 @@ in
     # Documents
     groff # Language for writing docs
     zathura # Pdf viewer
+    pdfgrep # Better grep for pdfs
+    ocrmypdf # Text recognition for pdfs
     # Audio
     pipewire
     pulsemixer # Audio settings TUI
