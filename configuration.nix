@@ -66,8 +66,8 @@ in
   services.xserver = {
     enable = true;
     dpi = 96;
-    layout = "us";
-    xkbVariant = "";
+    layout = "pl";
+    xkbVariant = "legacy";
     displayManager = {
       lightdm.enable = true;
       autoLogin = {
@@ -97,6 +97,8 @@ in
       };
     };
   };
+  # Configure console keymap
+  console.keyMap = "pl2";
 
   # Enable sound
   sound.enable = true;
