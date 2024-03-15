@@ -172,6 +172,7 @@
       trash-cli # Trash functionality in CLI
       tldr # Better 'man'
       lm_sensors # Monitoring sensors
+      inotify-tools # Monitoring changes to file and directories
       btop # Better 'top'
       htop # Better 'top'
       lsd # Better 'ls'
