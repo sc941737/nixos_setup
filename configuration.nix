@@ -3,12 +3,15 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+  machineIdDirContents = builtins.readDir /etc/nixos/machine_id;
+  machineIds = builtins.attrNames machineIdDirContents;
+  machineId = builtins.head machineIds;
+in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware/${machineId}/hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
