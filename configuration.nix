@@ -9,7 +9,7 @@ let
   machineId = builtins.head machineIds;
 in
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
     ./hardware/${machineId}/hardware-configuration.nix
   ];
 
@@ -65,7 +65,8 @@ in
   # Configure X11, DM, WM
   services.xserver = {
     enable = true;
-    dpi = 96;
+    upscaleDefaultCursor = true;
+    dpi = 192;
     layout = "pl";
     xkbVariant = "legacy";
     displayManager = {
@@ -99,6 +100,11 @@ in
   };
   # Configure console keymap
   console.keyMap = "pl2";
+
+  # Font config
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "SourceCodePro" "Hack" ]; })
+  ];
 
   # Enable sound
   sound.enable = true;
@@ -134,6 +140,16 @@ in
     interval = "hourly";
     package = pkgs.mlocate;
     localuser = null;
+  };
+
+  environment.variables = {
+    GDK_SCALE = "2";
+    GDK_DPI_SCALE = "0.5";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    EDITOR = "nvim";
+    BROWSER = "brave";
+    TERMINAL = "kitty";
+    MANGAL_READER_PDF="zathura";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -202,19 +218,6 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.variables = {
-    GDK_SCALE = "1.5";
-    EDITOR = "nvim";
-    BROWSER = "brave";
-    TERMINAL = "kitty";
-    MANGAL_READER_PDF="zathura";
-  };
-
-  # Font config
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "SourceCodePro" "Hack" ]; })
-  ];
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -281,7 +284,6 @@ in
     (dmenu.overrideAttrs {
       # src = /home/d/repos/dmenu;
       src = fetchFromGitHub {
-        # installFlags = [ "sysconfdir=$out/etc" "localstatedir=$out/var" ];
 	owner = "sc941737";
 	repo = "dmenu";
 	rev = "04bc4e6dd557a26da12688adb4ffcf3ce16ac859";
