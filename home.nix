@@ -64,7 +64,7 @@
   #  /etc/profiles/per-user/d/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    BT_MENU_CMD = "dmenu -fn Hack-22 -c -i -l 30";
+    BT_MENU_CMD = "dmenu -fn Hack-14 -c -i -l 30";
   };
 
   home.sessionPath = [
@@ -75,6 +75,13 @@
     sys-rebuild = "sudo nixos-rebuild switch --flake ~/repos/nixos_setup --impure";
     home-rebuild = "home-manager switch --flake ~/repos/nixos_setup --impure";
     full-rebuild = "sys-rebuild && home-rebuild";
+  };
+
+  home.pointerCursor = {
+    x11.enable = true;
+    package = pkgs.quintom-cursor-theme;
+    name = "Quintom_Ink";
+    size = 40;
   };
 
   # Desktop apps
@@ -111,7 +118,7 @@
     "text/*" = [ "editor.desktop" ];
     "image/*" = [ "sxiv.desktop" ];
     "video/*" = [ "mpv.desktop" ];
-    "audio/*" = [ "music.desktop" ]; # todo: Need an audio player
+    "audio/*" = [ "music.desktop" ]; 
     # "application/zip" = [ "unzip.desktop" ];
   };
 
@@ -121,8 +128,6 @@
     shadow = false;
     fade = false;
     opacityRules = [
-      # "80:class_g = 'kitty' && focused"
-      # "70:class_g = 'kitty' && !focused"
       "100:_NET_WM_STATE@[0]:32a = '_NET_WM_STATE_FULLSCREEN'"
       "100:_NET_WM_STATE@[0]:32a = '_NET_WM_STATE_MODAL'"
       "100:_NET_WM_STATE@[0]:32a = '_NET_WM_STATE_ABOVE'"

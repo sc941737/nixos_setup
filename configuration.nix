@@ -66,7 +66,7 @@ in
   services.xserver = {
     enable = true;
     upscaleDefaultCursor = true;
-    dpi = 192;
+    dpi = 124;
     layout = "pl";
     xkbVariant = "legacy";
     displayManager = {
@@ -77,7 +77,7 @@ in
       };
       sessionCommands = "dwmblocks &";
     };
-    desktopManager.wallpaper.mode = "scale";
+    desktopManager.wallpaper.mode = "scale"; # ~/.background-image
     windowManager.dwm = {
       enable = true;
       package = pkgs.dwm.overrideAttrs {
@@ -85,8 +85,8 @@ in
         src = pkgs.fetchFromGitHub {
 	  owner = "sc941737";
 	  repo = "dwm";
-	  rev = "a5a21bdd95f587268f135fe9aa2308290eb49ebb";
-	  sha256 = "sha256-pxeN3RGkOB/QTRzFwyXrouN7SYBqaVjClz/S9iU4jxY=";
+	  rev = "43feabe9c456071fac93cf464f162ffe8da4d443";
+	  sha256 = "sha256-qT2YH2YPx3D0A9F9NSDwFx/n46lxBB39UAZyFprrZkA=";
 	};
       };
     };
