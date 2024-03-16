@@ -84,6 +84,14 @@
     size = 40;
   };
 
+  gtk = {
+    enable = true;
+    theme = {
+      package = pkgs.libadwaita;
+      name = "adwaita-dark";
+    };
+  };
+
   # Desktop apps
   xdg.desktopEntries = let 
     app = name: cmd: {

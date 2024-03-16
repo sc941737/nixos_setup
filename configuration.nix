@@ -101,6 +101,13 @@ in
   # Configure console keymap
   console.keyMap = "pl2";
 
+  # Theme for QT apps
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
+
   # Font config
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "SourceCodePro" "Hack" ]; })
@@ -323,6 +330,7 @@ in
     enable = true;
   };
 
+  programs.java.enable = true;
 
   # List services that you want to enable:
 
