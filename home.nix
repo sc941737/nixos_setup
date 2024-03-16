@@ -97,6 +97,7 @@
     editor = (tui-app "Text Editor" "kitty -e nvim");  
     btop = (tui-app "System Monitor" "kitty -e btop");  
     music = (tui-app "Music Player" "kitty -e mocp");  
+    jetbrains-toolbox = (app "JetBrains Toolbox" "jetbrains-toolbox");
     # Not usable on their own:
     zathura = (app "Reader" "zathura");
     sxiv = (app "Pictures" "sxiv");
