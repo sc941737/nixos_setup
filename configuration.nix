@@ -159,9 +159,9 @@ in
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       # Browsers
-      ungoogled-chromium
-      brave
-      librewolf
+      # librewolf declared in home-manager
+      # ungoogled-chromium declared in home-manager
+      # brave declared in home-manager
       firefox
       mullvad-browser
       # Virtualisation

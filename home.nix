@@ -335,6 +335,68 @@
     };
     # CLI tools
     autojump.enable = true;
+    # Browsers
+    chromium = {
+      package = pkgs.ungoogled-chromium;
+      enable = true;
+      commandLineArgs = [ "--force-device-scale-factor=1.2" ];
+    };
+    brave = {
+      enable = true;
+      commandLineArgs = [ "--force-device-scale-factor=1.2" ];
+      extensions = [
+	# uBlock Origin
+        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }
+	# DarkReader
+	{ id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; }
+	# Vimium
+	{ id = "dbepggeogbaibhgnhhndojpepiihcmeb"; }
+      ];
+    };
+    librewolf = {
+      enable = true;
+      settings = let
+	ext = name: "https://addons.mozilla.org/firefox/downloads/latest/${name}/latest.xpi";
+      in {
+	  # Extensions
+	  "browser.policies.runOncePerModification.extensionsInstall" =
+	    "[${(ext "ublock-origin")}, ${(ext "darkreader")}, ${(ext "vimium-ff")}]";
+	  # Theme
+	  "extensions.activeThemeID" = "firefox-compact-dark@mozilla.Origin";
+	  # Security (safebrowsig disabled for privacy)
+	  "dom.security.https_only_mode_ever_enabled" = true;
+	  "browser.dom.window.dump.enabled" = false;
+	  "browser.safebrowsing.malware.enabled" = false;
+	  "browser.safebrowsing.phishing.enabled" = false;
+	  "browser.safebrowsing.blockedURIs.enabled" = false;
+	  "browser.safebrowsing.downloads.enabled" = false;
+	  # Privacy
+	  "webgl.disabled" = true;
+	  "layout.spellcheckDefault" = 0;
+	  "browser.translations.enable" = false;
+	  "browser.contentblocking.category" = "strict";
+	  "privacy.query_stripping.enabled" = true;
+	  "privacy.query_stripping.enabled.pbmode" = true;
+	  "browser.sessionstore.resume_from_crash" = false;
+	  "browser.warnOnQuitShortcut" = false;
+	  "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
+	  "browser.newtabpage.enabled" = false;
+	  "privacy.donottrackheader.enabled" = false;
+	  "privacy.globalprivacycontrol.enabled" = false;
+	  "privacy.clearOnShutdown.history" = true;
+	  "privacy.clearOnShutdown.downloads" = true;
+	  "privacy.clearOnShutdown.cookies" = true;
+	  "privacy.clearOnShutdown.cache" = true;
+	  "privacy.clearOnShutdown.offlineApps" = true;
+	  "privacy.trackingprotection.emailtracking.enabled" = true;
+	  "privacy.trackingprotection.enabled" = true;
+	  "privacy.trackingprotection.socialtracking.enabled" = true;
+	  "privacy.trackingprotection.fingerprinting.enabled" = true;
+	  "privacy.fingerprintingProtection" = true;
+	  "privacy.resistFingerprinting" = true;
+	  "privacy.resistFingerprinting.letterboxing" = true;
+      };
+    };
   };
 
   # Non-home-manager configs
