@@ -257,6 +257,7 @@ in
     dunst # Notification daemon
     # Network
     networkmanager_dmenu
+    bluetuith
     # Privacy
     mullvad-vpn
     # Email todo
