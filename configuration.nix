@@ -225,6 +225,7 @@ in
       nodejs # JS package manager
       jetbrains-toolbox # Jetbrains IDEs
       neovim # Text editor
+      sbcl # LISP compiler
     ];
   };
 
