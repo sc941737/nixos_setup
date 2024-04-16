@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 let
   machineIdDirContents = builtins.readDir /etc/nixos/machine_id;
   machineIds = builtins.attrNames machineIdDirContents;
@@ -170,7 +170,7 @@ in
     isNormalUser = true;
     description = "d";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
+    packages = (with pkgs; [
       # Browsers
       # librewolf declared in home-manager
       # ungoogled-chromium declared in home-manager
@@ -186,12 +186,6 @@ in
       protonup-qt
       protontricks
       lutris
-      # Media
-      freetube # YT client GUI
-      ytfzf # YT client TUI
-      ani-cli # Anime client TUI
-      mangal # Manga client TUI
-      mov-cli # Movies and series client TUI
       # Communication
       slack
       telegram-desktop
@@ -226,7 +220,16 @@ in
       jetbrains-toolbox # Jetbrains IDEs
       neovim # Text editor
       sbcl # LISP compiler
-    ];
+    ])
+    ++ 
+    (with pkgs-unstable; [
+      # Media
+      freetube # YT client GUI
+      ytfzf # YT client TUI
+      ani-cli # Anime client TUI
+      mangal # Manga client TUI
+      mov-cli # Movies and series client TUI
+    ]);
   };
 
   # Allow unfree packages
