@@ -375,6 +375,8 @@
 	  # Extensions
 	  "browser.policies.runOncePerModification.extensionsInstall" =
 	    "[${(ext "ublock-origin")}, ${(ext "darkreader")}, ${(ext "vimium-ff")}]";
+	  # Home
+	  "browser.startup.homepage" = "https://mullvad.net";
 	  # Theme
 	  "extensions.activeThemeID" = "firefox-compact-dark@mozilla.Origin";
 	  # Security (safebrowsig disabled for privacy)
@@ -393,7 +395,6 @@
 	  "privacy.query_stripping.enabled.pbmode" = true;
 	  "browser.sessionstore.resume_from_crash" = false;
 	  "browser.warnOnQuitShortcut" = false;
-	  "browser.startup.homepage" = "chrome://browser/content/blanktab.html";
 	  "browser.newtabpage.enabled" = false;
 	  "privacy.donottrackheader.enabled" = false;
 	  "privacy.globalprivacycontrol.enabled" = false;
