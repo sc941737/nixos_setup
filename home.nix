@@ -356,6 +356,7 @@
       commandLineArgs = [ "--force-device-scale-factor=1.2" ];
     };
     brave = {
+      package = pkgs-unstable.brave;
       enable = true;
       commandLineArgs = [ "--force-device-scale-factor=1.2" ];
       extensions = [
