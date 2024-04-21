@@ -212,7 +212,9 @@ in
       gdu # Disk usage analyser
       fzf # Fuzzy finder
       meld # Visual diff and merge tool
+      usbutils # lsusb and similar
       # Software development
+      android-tools # adb and the like
       bandwhich # Monitoring network requests
       so # TUI for StackOverflow and similar
       cargo # Rust package manager
@@ -229,6 +231,7 @@ in
       ani-cli # Anime client TUI
       mangal # Manga client TUI
       mov-cli # Movies and series client TUI
+      jan # local GPT-like AI
     ]);
   };
 
