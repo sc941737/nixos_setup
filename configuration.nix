@@ -94,6 +94,7 @@ in
       enable = true;
       touchpad = {
         accelSpeed = "1";
+	accelProfile = "flat";
         disableWhileTyping = true;
       };
     };
