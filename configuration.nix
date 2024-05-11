@@ -81,12 +81,13 @@ in
     windowManager.dwm = {
       enable = true;
       package = pkgs.dwm.overrideAttrs {
+      # When revising, add new rev, then change sha to 52 zeros, and the new sha will appear in the error message.
 	# src = /home/d/repos/dwm;
         src = pkgs.fetchFromGitHub {
 	  owner = "sc941737";
 	  repo = "dwm";
-	  rev = "43feabe9c456071fac93cf464f162ffe8da4d443";
-	  sha256 = "sha256-qT2YH2YPx3D0A9F9NSDwFx/n46lxBB39UAZyFprrZkA=";
+	  rev = "24ed7d5059ec9d31d33142472bb5a87716f586b1";
+	  sha256 = "sha256-MbO3iazSSicEKoDPXcFCvYPNetg5L2pYplm3IwEjmNU=";
 	};
       };
     };
@@ -317,8 +318,8 @@ in
       src = fetchFromGitHub {
 	owner = "sc941737";
 	repo = "dwmblocks";
-	rev = "1af342f3a1d66a1295c4e05223cbe623fd8f8628";
-	sha256 = "sha256-bum9mYaFtj4nvzL0bhxqFyr/wuE+9BW/wt+i0m4qh40=";
+	rev = "06ab78b1766b25f5cbe28b38797e9eaa860045c8";
+	sha256 = "sha256-0rldS8E2clpuAuhlsOiPQk4q28DAv6/9aBvLqEtld2A=";
       };
     })
     xdg-desktop-portal-gtk
