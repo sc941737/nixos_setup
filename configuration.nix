@@ -86,8 +86,8 @@ in
         src = pkgs.fetchFromGitHub {
 	  owner = "sc941737";
 	  repo = "dwm";
-	  rev = "24ed7d5059ec9d31d33142472bb5a87716f586b1";
-	  sha256 = "sha256-MbO3iazSSicEKoDPXcFCvYPNetg5L2pYplm3IwEjmNU=";
+	  rev = "98b30a08fa52b5469d4b21c9724b7bda4cdc9372";
+	  sha256 = "sha256-PQ3YbydKuSlTpqyY0Z8kDPx0tH/+ztLNxqi+oV2Yzkc=";
 	};
       };
     };
@@ -319,8 +319,8 @@ in
       src = fetchFromGitHub {
 	owner = "sc941737";
 	repo = "dwmblocks";
-	rev = "06ab78b1766b25f5cbe28b38797e9eaa860045c8";
-	sha256 = "sha256-0rldS8E2clpuAuhlsOiPQk4q28DAv6/9aBvLqEtld2A=";
+	rev = "4e08192e6ba0b4916be2c31cc743c4e9ebce4fdf";
+	sha256 = "sha256-nNNGR+yW6gBKqDbLCgElXTpxkDeK7BWpJx5csrnRY7Q=";
       };
     })
     xdg-desktop-portal-gtk
