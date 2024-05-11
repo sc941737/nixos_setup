@@ -181,6 +181,7 @@ in
       mullvad-browser
       # Virtualisation
       wine
+      wine64
       winetricks
       qemu_kvm
       # Games
