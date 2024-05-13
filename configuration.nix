@@ -319,8 +319,8 @@ in
       src = fetchFromGitHub {
 	owner = "sc941737";
 	repo = "dwmblocks";
-	rev = "4e08192e6ba0b4916be2c31cc743c4e9ebce4fdf";
-	sha256 = "sha256-nNNGR+yW6gBKqDbLCgElXTpxkDeK7BWpJx5csrnRY7Q=";
+	rev = "173dd3091827ace4b4cc26a998f82812088ab7a2";
+	sha256 = "sha256-5fA3SSeC+d6gPTYnZMS85NhzMoa431hLyyjAJ0f4ljE=";
       };
     })
     xdg-desktop-portal-gtk

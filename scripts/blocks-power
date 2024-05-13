@@ -1,0 +1,4 @@
+#!/run/current-system/sw/bin/bash
+
+battery=$(cat /sys/class/power_supply/BAT1/capacity)
+[ -n "$battery" ] && echo "Bat: ${battery}%"

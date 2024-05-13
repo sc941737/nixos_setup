@@ -1,0 +1,3 @@
+#!/run/current-system/sw/bin/bash
+
+xdotool windowclose $(xdotool getwindowfocus)

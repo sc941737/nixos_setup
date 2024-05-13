@@ -1,0 +1,8 @@
+#!/run/current-system/sw/bin/bash
+
+vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@); 
+vol=${vol#*0.} # Remove noise from fractions
+vol=${vol//.} # Remove dot from 1.00
+vol=${vol##* } # Remove noise from 1.00
+vol=$((vol)) # Convert to real number
+echo "Vol: ${vol}%"
