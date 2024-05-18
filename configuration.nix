@@ -185,7 +185,6 @@ in
       winetricks
       qemu_kvm
       # Games
-      steam-tui
       protonup-qt
       protontricks
       lutris
