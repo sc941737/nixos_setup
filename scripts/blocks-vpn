@@ -1,0 +1,7 @@
+#!/run/current-system/sw/bin/bash
+
+status=$(mullvad status)
+[[ "$status" == *"-"* ]] &&
+    location=$(echo "$status" | awk '{print $3}' | awk -F '-' '{print $1, $2}' OFS='-') ||
+    location=${status%%[^A-Za-z]*}
+echo " VPN: $location"

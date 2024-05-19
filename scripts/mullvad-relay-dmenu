@@ -12,3 +12,4 @@ relay_city=${relay_city%%\)*}
 
 relay_location="$relay_country $relay_city"
 mullvad relay set location $relay_location
+sleep 1 && kill -45 $(pidof dwmblocks)
