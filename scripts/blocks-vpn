@@ -1,7 +1,9 @@
 #!/run/current-system/sw/bin/bash
 
-status=$(mullvad status)
-[[ "$status" == *"-"* ]] &&
-    location=$(echo "$status" | awk '{print $3}' | awk -F '-' '{print $1, $2}' OFS='-') ||
-    location=${status%%[^A-Za-z]*}
-echo " VPN: $location"
+response=$(curl https://am.i.mullvad.net/json)
+connected=$(echo $response | jq -r '.mullvad_exit_ip')
+hostname=$(echo $response | jq -r '.mullvad_exit_ip_hostname')
+$connected &&
+    status=$(echo $hostname | awk -F '-' '{print $1, $2}' OFS='-') ||
+    status="OFF!"
+echo " VPN: $status"
