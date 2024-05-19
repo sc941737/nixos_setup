@@ -104,6 +104,7 @@
       terminal = true;
     };
   in {
+    vpn-location = (app "VPN Location Settings" "bash mullvad-relay-dmenu");
     bt = (app "Bluetooth Settings" "bash bluetooth_dmenu"); 
     network = (app "Network Settings" "networkmanager_dmenu"); 
     audio = (tui-app "Audio Settings" "kitty -e pulsemixer");  

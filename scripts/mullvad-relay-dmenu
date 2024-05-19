@@ -1,0 +1,14 @@
+#!/run/current-system/sw/bin/bash
+
+dmenu_cmd="dmenu -fn Hack-14 -c -i -l 30"
+
+relay_country=$(mullvad relay list | grep -v "^\s" | grep -v "^$" | $dmenu_cmd)
+relay_country=${relay_country##*\(}
+relay_country=${relay_country%%\)*}
+
+relay_city=$(mullvad relay list | grep -P "\(\D{2,3}\)" | tr '\t' ' ' | sed "1,/($relay_country)/d" | sed '/^\S/,$d' | $dmenu_cmd)
+relay_city=${relay_city##*\(}
+relay_city=${relay_city%%\)*}
+
+relay_location="$relay_country $relay_city"
+mullvad relay set location $relay_location
