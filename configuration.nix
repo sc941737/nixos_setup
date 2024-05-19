@@ -86,8 +86,8 @@ in
         src = pkgs.fetchFromGitHub {
 	  owner = "sc941737";
 	  repo = "dwm";
-	  rev = "98b30a08fa52b5469d4b21c9724b7bda4cdc9372";
-	  sha256 = "sha256-PQ3YbydKuSlTpqyY0Z8kDPx0tH/+ztLNxqi+oV2Yzkc=";
+	  rev = "69e04439e53ff7baf7ec629e20a8830ede6415c8";
+	  sha256 = "sha256-Ty1eISVGdd8s597GE3KHz6DcvuxsFlvyfhAK3AZIQGs=";
 	};
       };
     };
@@ -100,6 +100,15 @@ in
       };
     };
   };
+  security.sudo.extraRules = [
+    { 
+      groups = [ "wheel" ];
+      commands = [ { 
+	command = "/home/d/repos/nixos_setup/scripts/blocks-brightness";
+        options = [ "NOPASSWD" ];
+      } ];
+    }
+  ];
   # Configure console keymap
   console.keyMap = "pl2";
 

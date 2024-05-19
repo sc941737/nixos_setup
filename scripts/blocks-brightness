@@ -1,0 +1,21 @@
+#!/run/current-system/sw/bin/bash
+
+brightness_file="/sys/class/backlight/*/brightness"
+current=$(cat $brightness_file)
+
+function dec() {
+    local min=0      
+    new=$((current - 5))
+    [ $new -lt $min ] && new=$min
+}
+
+function inc() {
+    local max=$(cat /sys/class/backlight/*/max_brightness)
+    new=$((current + 5))
+    [ $new -gt $max ] && new=$max
+}
+
+[ -z $1 ] && echo $new && exit 0
+
+$1
+echo $new | sudo tee $brightness_file
