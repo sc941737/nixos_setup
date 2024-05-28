@@ -86,8 +86,8 @@ in
         src = pkgs.fetchFromGitHub {
 	  owner = "sc941737";
 	  repo = "dwm";
-	  rev = "69e04439e53ff7baf7ec629e20a8830ede6415c8";
-	  sha256 = "sha256-Ty1eISVGdd8s597GE3KHz6DcvuxsFlvyfhAK3AZIQGs=";
+	  rev = "4916a8495ef747dd2fd0abcb65d8d2b3aa7d3537";
+	  sha256 = "sha256-aVRssUra5AdSEkUx780E1HrVd3AwOCBLJ/2MRMadyTc=";
 	};
       };
     };

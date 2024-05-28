@@ -6,4 +6,4 @@ hostname=$(echo $response | jq -r '.mullvad_exit_ip_hostname')
 $connected &&
     status=$(echo $hostname | awk -F '-' '{print $1, $2}' OFS='-') ||
     status="OFF!"
-echo " VPN: $status"
+echo "VPN: $status"
