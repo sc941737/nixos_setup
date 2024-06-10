@@ -189,7 +189,7 @@
       globals.mapleader = " ";
       colorschemes.dracula.enable = true;
       clipboard.providers.xclip.enable = true;
-      options = {
+      opts = {
         number = true;
         relativenumber = true;
         shiftwidth = 4;
@@ -279,7 +279,7 @@
 	auto-save.enable = true; # Auto save changes
         oil.enable = true; # Buffer-like file system editing
         treesitter.enable = true;
-	comment-nvim.enable = true; # Easy commenting
+	comment.enable = true; # Easy commenting
 	bufferline = {
 	  enable = true; # Editor tabs
 	  numbers = "ordinal"; # Ensures buffers are numbered in order
@@ -287,35 +287,34 @@
 	gitsigns.enable = true; # Git hunk integration
 	fugitive.enable = true; # Git integration
         luasnip.enable = true; # Code snippets
-        nvim-cmp = {
-          enable = true;
-          autoEnableSources = true;
-          sources = [
-            { name = "nvim_lsp"; }
-            { name = "path"; }
-            { name = "buffer"; }
-          ];
-	  mapping = {
-	    "<CR>" = "cmp.mapping.confirm({ select = true })";
-	    "<Tab>" = {
-	      action = ''
-	        function(fallback)
-		  if cmp.visible() then
+	cmp = {
+	  settings = {
+	    sources = [
+	      { name = "nvim_lsp"; }
+	      { name = "path"; }
+	      { name = "buffer"; }
+	    ];
+	    mapping = {
+	      "<CR>" = "cmp.mapping.confirm({ select = true })";
+	      "<Tab>" = ''
+		function(fallback)
+	       	  if cmp.visible() then
 		    cmp.select_next_item()
 		  else 
 		    fallback()
 		  end
 		end
 	      '';
-	      modes = [ "i" "s" ];
 	    };
 	  };
+          enable = true;
+          autoEnableSources = true;
         };
         lsp = {
           enable = true;
           servers = {
             lua-ls.enable = true;
-            nil_ls.enable = true;
+            nil-ls.enable = true;
             bashls.enable = true;
             clangd.enable = true;
             tsserver.enable = true;

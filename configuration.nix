@@ -67,14 +67,12 @@ in
     enable = true;
     upscaleDefaultCursor = true;
     dpi = 124;
-    layout = "pl";
-    xkbVariant = "legacy";
+    xkb = {
+      layout = "pl";
+      variant = "legacy";
+    };
     displayManager = {
       lightdm.enable = true;
-      autoLogin = {
-        enable = true;
-        user = "d";
-      };
       sessionCommands = "dwmblocks &";
     };
     desktopManager.wallpaper.mode = "scale"; # ~/.background-image
@@ -91,13 +89,19 @@ in
 	};
       };
     };
-    libinput = {
+  };
+  services.displayManager = {
+    autoLogin = {
       enable = true;
-      touchpad = {
-        accelSpeed = "1";
-	accelProfile = "flat";
-        disableWhileTyping = true;
-      };
+      user = "d";
+    };
+  };
+  services.libinput = {
+    enable = true;
+    touchpad = {
+      accelSpeed = "1";
+      accelProfile = "flat";
+      disableWhileTyping = true;
     };
   };
   security.sudo.extraRules = [
@@ -232,7 +236,7 @@ in
       nodejs # JS package manager
       jetbrains-toolbox # Jetbrains IDEs
       neovim # Text editor
-      sbcl # LISP compiler
+      sbcl # Steel Bank Common Lisp
     ])
     ++ 
     (with pkgs-unstable; [
