@@ -237,6 +237,9 @@ in
       jetbrains-toolbox # Jetbrains IDEs
       neovim # Text editor
       sbcl # Steel Bank Common Lisp
+      clisp # GNU Common Lisp
+      asdf # Common Lisp build system
+      cl-launch # Common Lisp CLI launcher
     ])
     ++ 
     (with pkgs-unstable; [
