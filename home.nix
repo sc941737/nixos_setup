@@ -84,14 +84,6 @@
     size = 40;
   };
 
-  gtk = {
-    enable = true;
-    theme = {
-      package = pkgs.libadwaita;
-      name = "adwaita-dark";
-    };
-  };
-
   # Desktop apps
   xdg.desktopEntries = let 
     app = name: cmd: {
@@ -105,7 +97,7 @@
     };
   in {
     vpn-location = (app "VPN Location Settings" "bash mullvad-relay-dmenu");
-    bt = (app "Bluetooth Settings" "bash bluetooth_dmenu"); 
+    bt = (app "Bluetooth Settings" "kitty -e bluetuith"); 
     network = (app "Network Settings" "networkmanager_dmenu"); 
     audio = (tui-app "Audio Settings" "kitty -e pulsemixer");  
     files = (tui-app "File Manager" "kitty -e ranger");  
@@ -150,6 +142,7 @@
       blur = {
         method = "dual_kawase";
       };
+      use-damage = false; # Fixes glitching after sleep in recent versions, may reduce performance
     };
   };
 
@@ -275,11 +268,12 @@
 	  extensions.fzf-native.enable = true;
 	}; # Search
 	nvim-tree.enable = true; # File tree column
-	nvim-autopairs.enable = true; # Pairing quotes, brackets etc.
 	auto-save.enable = true; # Auto save changes
         oil.enable = true; # Buffer-like file system editing
         treesitter.enable = true;
 	comment.enable = true; # Easy commenting
+	parinfer-rust.enable = true; # Auto managed brackets
+	rainbow-delimiters.enable = true;
 	bufferline = {
 	  enable = true; # Editor tabs
 	  numbers = "ordinal"; # Ensures buffers are numbered in order
