@@ -299,6 +299,7 @@ in
     zathura # Pdf viewer
     pdfgrep # Better grep for pdfs
     ocrmypdf # Text recognition for pdfs
+    visidata # Spreadsheets (.csv)
     # Audio
     pipewire
     pulsemixer # Audio settings TUI
