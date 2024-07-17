@@ -201,6 +201,8 @@ in
       protonup-qt
       protontricks
       lutris
+      # Media
+      mangal # Manga client TUI
       # Communication
       slack
       telegram-desktop
@@ -217,6 +219,7 @@ in
       lm_sensors # Monitoring sensors
       inotify-tools # Monitoring changes to file and directories
       btop # Better 'top'
+      nvtopPackages.amd # 'top' for GPU
       htop # Better 'top'
       lsd # Better 'ls'
       bat # Better 'cat'
@@ -226,6 +229,7 @@ in
       redo # Wrap commands from history into a function
       gdu # Disk usage analyser
       fzf # Fuzzy finder
+      jqp # Interactive 'jq'
       meld # Visual diff and merge tool
       usbutils # lsusb and similar
       # Software development
@@ -247,7 +251,6 @@ in
       freetube # YT client GUI
       ytfzf # YT client TUI
       ani-cli # Anime client TUI
-      mangal # Manga client TUI
       mov-cli # Movies and series client TUI
       jan # local GPT-like AI
     ]);
@@ -277,6 +280,8 @@ in
     # Fonts
     nerdfonts
     fontconfig
+    # System Services
+    sysz # TUI fzf for systemctl
     # Notifications
     libnotify
     dunst # Notification daemon
@@ -291,6 +296,7 @@ in
     exfat
     exfatprogs
     # File manager
+    yazi # TUI file manager
     ranger # TUI file manager
     ueberzugpp # Allows ranger to view images
     ripdrag # Terminal drag and drop
@@ -300,6 +306,7 @@ in
     pdfgrep # Better grep for pdfs
     ocrmypdf # Text recognition for pdfs
     visidata # Spreadsheets (.csv)
+    sc-im # Spreadsheets (.ods, .xslx and others)
     # Audio
     pipewire
     pulsemixer # Audio settings TUI
