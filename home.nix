@@ -194,27 +194,43 @@
 	  play_audio = [
 	    { run = "kitty -e mocp \"$@\""; orphan = true; desc = "Play in mocp"; }
 	  ];
-	  view_pdf = [
+	  view_doc = [
 	    { run = "zathura \"$@\""; orphan = true; desc = "View"; }
 	  ];
 	  view_image = [
 	    { run = "sxiv \"$@\""; orphan = true; desc = "View"; }
 	  ];
+	  gallery_view = [
+	    { run = "sxiv \"$1/\""; orphan = true; desc = "View gallery"; }
+	  ];
 	  open_browser = [
 	    { run = "$BROWSER \"$@\""; orphan = true; desc = "Open in browser"; }
+	  ];
+	  sc-im = [
+	    { run = "kitty -e sc-im \"$1\""; orphan = true; desc = "Open in sc-im"; }
+	  ];
+	  visidata = [
+	    { run = "kitty -e visidata \"$1\""; orphan = true; desc = "Open in visidata"; }
 	  ];
 	};
 	open = {
 	  prepend_rules = [
+	    # Spreadsheets 
+	    { name = "*.xlsx"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
+	    { name = "*.csv"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
+	    { name = "*.tsv"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
+	    { name = "*.odt"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
 	    # Documents 
-	    { name = "*.pdf"; use = [ "view_pdf" "open_browser" "exif" "reveal" ]; }
-	    { name = "*.djvu"; use = [ "view_pdf" "open_browser" "exif" "reveal" ]; }
-	    { name = "*.epub"; use = [ "view_pdf" "open_browser" "exif" "reveal" ]; }
+	    { name = "*.pdf"; use = [ "view_doc" "open_browser" "exif" "reveal" ]; }
+	    { name = "*.djvu"; use = [ "view_doc" "open_browser" "exif" "reveal" ]; }
+	    { name = "*.epub"; use = [ "view_doc" "open_browser" "exif" "reveal" ]; }
 	    # Media
 	    { mime = "image/*"; use = [ "view_image" "exif" "reveal" ]; }
 	    { mime = "audio/*"; use = [ "play_audio" "play_video" "exif" "reveal" ]; }
 	    # Code
 	    { name = "*.html"; use = [ "edit" "open_browser" "exif" "reveal" ]; }
+	    # Directories
+	    { mime = "inode/directory"; use = [ "edit" "gallery_view" "open" "exif" "reveal" ]; }
 	  ];
 	};
       };
