@@ -84,8 +84,8 @@ in
         src = pkgs.fetchFromGitHub {
 	  owner = "sc941737";
 	  repo = "dwm";
-	  rev = "4916a8495ef747dd2fd0abcb65d8d2b3aa7d3537";
-	  sha256 = "sha256-aVRssUra5AdSEkUx780E1HrVd3AwOCBLJ/2MRMadyTc=";
+	  rev = "ae484733958785294d9ec3489dd34f5ad98b7b9c";
+	  sha256 = "sha256-1XGBkQP0xam+LEMS+fPnicUFn/m2wHu27fGsV18Lotg=";
 	};
       };
     };
@@ -176,6 +176,7 @@ in
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     EDITOR = "nvim";
     BROWSER = "brave";
+    FILE_MANAGER = "yazi";
     TERMINAL = "kitty";
     MANGAL_READER_PDF="zathura";
   };
@@ -210,7 +211,7 @@ in
       discord
       betterdiscordctl
       # Convenience
-      autojump # Better 'cd'
+      fd # Better 'find'
       neofetch # Show system info
       speedtest-cli # Internet speed test
       progress # Shows progress of CLI data transfer
@@ -297,8 +298,9 @@ in
     exfatprogs
     # File manager
     yazi # TUI file manager
-    ranger # TUI file manager
-    ueberzugpp # Allows ranger to view images
+    exiftool # Allows yazi to show EXIF metadata
+    mediainfo # Allows yazi to show media metadata
+    ueberzugpp # Allows yazi to view images
     ripdrag # Terminal drag and drop
     # Documents
     groff # Language for writing docs

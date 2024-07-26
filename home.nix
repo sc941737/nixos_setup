@@ -100,7 +100,7 @@
     bt = (app "Bluetooth Settings" "kitty -e bluetuith"); 
     network = (app "Network Settings" "networkmanager_dmenu"); 
     audio = (tui-app "Audio Settings" "kitty -e pulsemixer");  
-    files = (tui-app "File Manager" "kitty -e ranger");  
+    files = (tui-app "File Manager" "kitty -e yazi");  
     calendar = (tui-app "Calendar" "kitty -e calcure");  
     editor = (tui-app "Text Editor" "kitty -e nvim");  
     btop = (tui-app "System Monitor" "kitty -e btop");  
@@ -176,9 +176,56 @@
         "shift+alt+j" = "scroll_page_down";
       };
     };
+    zoxide.enable = true;
+    # File manager
+    yazi = {
+      enable = true;
+      settings = {
+	manager = {
+	  mouse_events = [ "click" "scroll" "move" "drag" ];
+	};
+	opener = {
+	  edit = [
+	    { run = "kitty -e $EDITOR \"$@\""; orphan = true; desc = "Edit"; }
+	  ];
+	  play_video = [
+	    { run = "mpv \"$@\""; orphan = true; desc = "Play in mpv"; }
+	  ];
+	  play_audio = [
+	    { run = "kitty -e mocp \"$@\""; orphan = true; desc = "Play in mocp"; }
+	  ];
+	  view_pdf = [
+	    { run = "zathura \"$@\""; orphan = true; desc = "View"; }
+	  ];
+	  view_image = [
+	    { run = "sxiv \"$@\""; orphan = true; desc = "View"; }
+	  ];
+	  open_browser = [
+	    { run = "$BROWSER \"$@\""; orphan = true; desc = "Open in browser"; }
+	  ];
+	};
+	open = {
+	  prepend_rules = [
+	    # Documents 
+	    { name = "*.pdf"; use = [ "view_pdf" "open_browser" "exif" "reveal" ]; }
+	    { name = "*.djvu"; use = [ "view_pdf" "open_browser" "exif" "reveal" ]; }
+	    { name = "*.epub"; use = [ "view_pdf" "open_browser" "exif" "reveal" ]; }
+	    # Media
+	    { mime = "image/*"; use = [ "view_image" "exif" "reveal" ]; }
+	    { mime = "audio/*"; use = [ "play_audio" "play_video" "exif" "reveal" ]; }
+	    # Code
+	    { name = "*.html"; use = [ "edit" "open_browser" "exif" "reveal" ]; }
+	  ];
+	};
+      };
+      # keymaps = [
+      # ];
+    };
     # Editor
     nixvim = {
       enable = true;
+      vimAlias = true;
+      defaultEditor = true;
       globals.mapleader = " ";
       colorschemes.dracula.enable = true;
       clipboard.providers.xclip.enable = true;
@@ -414,8 +461,6 @@
   home.file.".bash_aliases".source = ./.bash_aliases;
   home.file.".config/networkmanager-dmenu/config.ini".source = ./config/networkmanager-dmenu/config.ini;
   home.file.".config/sxiv/exec/key-handler".source = ./config/sxiv/key-handler;
-  home.file.".config/ranger/rc.conf".source = ./config/ranger/rc.conf;
-  home.file.".config/ranger/rifle.conf".source = ./config/ranger/rifle.conf;
   home.file.".config/BetterDiscord/themes/DarkMatter.theme.css".source = ./config/discord/DarkMatter.theme.css;
   home.file.".moc/config".source = ./config/moc/config;
   home.file.".moc/keymap".source = ./config/moc/keymap;
