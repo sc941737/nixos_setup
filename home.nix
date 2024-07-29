@@ -104,6 +104,8 @@
     calendar = (tui-app "Calendar" "kitty -e calcure");  
     editor = (tui-app "Text Editor" "kitty -e nvim");  
     btop = (tui-app "System Monitor" "kitty -e btop");  
+    nvtop = (tui-app "GPU Monitor" "kitty -e nvtop");  
+    services = (tui-app "System Services" "kitty -e sysz");  
     music = (tui-app "Music Player" "kitty -e mocp");  
     jetbrains-toolbox = (app "JetBrains Toolbox" "jetbrains-toolbox");
     # Not usable on their own:

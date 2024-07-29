@@ -221,7 +221,6 @@ in
       inotify-tools # Monitoring changes to file and directories
       btop # Better 'top'
       nvtopPackages.amd # 'top' for GPU
-      htop # Better 'top'
       lsd # Better 'ls'
       bat # Better 'cat'
       viddy # Better 'watch'
