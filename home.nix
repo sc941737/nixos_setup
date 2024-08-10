@@ -289,6 +289,11 @@
 	(kmap "blast" (altkey (toString 0))) # Go to last tab/buffer
 	(kmap "bnext" "<M-Tab>") # Go to next tab/buffer
 	(kmap "bprev" "<M-S-Tab>") # Go to previous tab/buffer
+	# Navigate between windows
+	(kmap "wincmd j" "<c-j>") 
+	(kmap "wincmd k" "<c-k>") 
+	(kmap "wincmd h" "<c-h>") 
+	(kmap "wincmd l" "<c-l>") 
 	# Telescope
         (telescope "grep_string" "fs")
         (telescope "live_grep" "fg")
@@ -378,6 +383,7 @@
             clangd.enable = true;
             tsserver.enable = true;
             html.enable = true;
+	    cssls.enable = true;
             jsonls.enable = true;
             kotlin-language-server.enable = true;
             java-language-server.enable = true;
