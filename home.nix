@@ -255,6 +255,11 @@
 	cmdheight = 2; # Need this to avoid annoying messages interrupting flow
       };
       autoCmd = let
+	nix = e: cmd: {
+	  event = [ e ];
+	  pattern = [ "*.nix" ];
+	  command = cmd;
+	};
 	groff = e: cmd: {
 	  event = [ e ];
 	  pattern = [ "*.ms" "*.mm" "*.mom" "*.man" ];
@@ -266,6 +271,8 @@
 	  command = cmd;
 	};
       in [
+	(nix "BufEnter" "set shiftwidth=2")
+	(nix "BufLeave" "set shiftwidth=4")
      	(groff "BufEnter" "groff-open-preview")
      	(groff "BufLeave" "groff-close-preview")
      	(groff "VimLeave" "groff-close-preview")
