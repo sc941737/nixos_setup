@@ -244,7 +244,8 @@
       enable = true;
       vimAlias = true;
       defaultEditor = true;
-      globals.mapleader = " ";
+      globals.mapleader = " "; # Space
+      globals.maplocalleader = " "; 
       colorschemes.dracula.enable = true;
       clipboard.providers.xclip.enable = true;
       opts = {
@@ -259,11 +260,18 @@
 	  pattern = [ "*.ms" "*.mm" "*.mom" "*.man" ];
 	  command = "!${cmd} %";
 	};
+	neorg = e: cmd: {
+	  event = [ e ];
+	  pattern = [ "*.org" "*.norg" ];
+	  command = cmd;
+	};
       in [
      	(groff "BufEnter" "groff-open-preview")
      	(groff "BufLeave" "groff-close-preview")
      	(groff "VimLeave" "groff-close-preview")
       	(groff "BufWritePost" "groff-compile-preview")
+	(neorg "BufEnter" "set conceallevel=3")
+	(neorg "BufLeave" "set conceallevel=0")
       ];
       keymaps = let
 	lib = pkgs.lib;
@@ -329,9 +337,51 @@
           plugin = vim-visual-multi;
 	  # config = "";
 	}
+	# Need to package the below plugins for neorg to work
+	# See: https://github.com/nix-community/nixvim/issues/1395
+	(pkgs.vimUtils.buildVimPlugin {
+	  inherit (pkgs.luaPackages.lua-utils-nvim) pname version src;
+	})
+	(pkgs.vimUtils.buildVimPlugin {
+	  inherit (pkgs.luaPackages.pathlib-nvim) pname version src;
+	})
+	(pkgs.vimUtils.buildVimPlugin {
+	  inherit (pkgs.luaPackages.nvim-nio) pname version src;
+	})
       ];
       plugins = {
         lualine.enable = true; # Fancy indicators in nvim line
+	neorg = {
+	  enable = true;
+	  modules = {
+	    "core.defaults" = {
+	      __empty = null;
+	    };
+	    "core.pivot" = {};
+	    "core.journal" = {};
+	    "core.qol.todo_items" = {
+	      config = {
+		create_todo_items = true;
+		create_todo_parents = true;
+	      };
+	    };
+	    "core.concealer" = {
+	      config = {
+		icon_preset = "diamond";
+	      };
+	    };
+	    "core.dirman" = {
+	      config = {
+		index = "index.norg";
+		workspaces = {
+		  notes = "~/notes";
+		};
+		default_workspace = "notes";
+	      };
+	    };
+	  }; 
+	};
+	quickmath.enable = true; # Built-in calculator with variables and functions
 	surround.enable = true; # Add/change/delete surrounding characters
         telescope = {
 	  enable = true;
