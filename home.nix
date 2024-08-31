@@ -108,6 +108,10 @@
     services = (tui-app "System Services" "kitty -e sysz");  
     music = (tui-app "Music Player" "kitty -e mocp");  
     jetbrains-toolbox = (app "JetBrains Toolbox" "jetbrains-toolbox");
+    screenshot = (app "Flameshot" "flameshot gui");
+    screenshot2txt = (app "Flameshot + Tesseract" "${pkgs.writeScript "screenshot2txt" '' 
+    ${pkgs.flameshot}/bin/flameshot gui --raw | ${pkgs.tesseract}/bin/tesseract - - | ${pkgs.xclip}/bin/xclip -sel clip
+    ''}");
     # Not usable on their own:
     zathura = (app "Reader" "zathura");
     sxiv = (app "Pictures" "sxiv");

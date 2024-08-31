@@ -316,6 +316,7 @@ in
     # Images
     sxiv # Image viewer
     flameshot # Screenshots
+    tesseract
     imagemagick # Image editing
     # Video
     mpv # Video player
