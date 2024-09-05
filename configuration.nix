@@ -62,6 +62,8 @@ in
   ];
   hardware.opengl.enable = true;
 
+  virtualisation.docker.enable = true;
+
   # Configure X11, DM, WM
   services.xserver = {
     enable = true;
@@ -185,7 +187,7 @@ in
   users.users.d = {
     isNormalUser = true;
     description = "d";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = (with pkgs; [
       # Browsers
       # librewolf declared in home-manager
@@ -252,7 +254,7 @@ in
       ytfzf # YT client TUI
       ani-cli # Anime client TUI
       mov-cli # Movies and series client TUI
-      jan # local GPT-like AI
+      jan # Local GPT-like AI
     ]);
   };
 
@@ -380,7 +382,9 @@ in
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 
+    44001 # Docker Local AI
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
