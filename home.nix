@@ -65,6 +65,7 @@
   #
   home.sessionVariables = {
     BT_MENU_CMD = "dmenu -fn Hack-14 -c -i -l 30";
+    GTK_THEME = "Adwaita-dark";
   };
 
   home.sessionPath = [
@@ -185,6 +186,7 @@
     zoxide.enable = true;
     # File manager
     yazi = {
+      package = pkgs-unstable.yazi;
       enable = true;
       settings = {
 	manager = {
