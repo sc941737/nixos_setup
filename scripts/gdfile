@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+branch="$2"
+filePath=$(du -ah . | grep -r "$1" 2>>/dev/null | awk -F '\t' '{ print $NF }')
+[ -z "$branch" ] && git diff $filePath || git diff $branch -- $filePath

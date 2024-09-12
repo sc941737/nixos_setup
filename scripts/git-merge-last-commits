@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Saving commit message in a file, in case it is multi-line.
+message_file=/tmp/temp-commit-message.txt
+
+git status 1>/dev/null || exit 1 # Not a git repo.
+
+[[ -n "$1" || -n "$2" ]] && has_args=true || has_args=false
+
+[ "$1" -ge 0 ] 2>/dev/null && is_first_index=true || is_first_index=false
+
+# Index defaults to merging last 2 commits
+[ "$is_first_index" = true ] && selected_commit_index=$1 || selected_commit_index=2
+
+# Commit message defaults to last commit message
+git rev-list --format=%B --max-count=1 HEAD~0 | grep -v "^commit" > $message_file
+
+# First arg as the commit message
+[[ "$is_first_index" = false && "$has_args" = true ]] && echo "$1" > $message_file
+
+# Second arg as the commit message
+[ -n "$2" ] && echo "$2" > $message_file
+
+git reset HEAD~$selected_commit_index
+git add -A
+git commit -F $message_file
+
+rm $message_file

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# todo: allow for commits
+
+branchFile=$HOME/.gitbranches
+delim="::"	
+currentBranch=$(git branch --show 2>/dev/null)
+[[ -z $currentBranch ]] && (echo "Not a git repo."; exit 1)
+currentRepo=$(pwd | awk -F "/" '{ print $NF }')
+[[ -f $branchFile ]] || touch $branchFile
+key="$currentRepo$delim" 
+savedEntry=$(grep $key $branchFile)
+newEntry="$key$currentBranch"
+
+saveCurrentBranch() {
+    [[ -z $savedEntry ]] && 
+	    (echo $newEntry >> $branchFile && echo "No saved branch. Adding entry $currentRepo.") ||
+	    (sed "s/$savedEntry/$newEntry/" $branchFile > tmp && mv tmp $branchFile)
+}
+
+checkoutLast() {
+    local lastBranch=$(echo $savedEntry | awk -F $delim '{ print $NF }')
+    git switch $lastBranch && saveCurrentBranch
+}
+
+checkoutOther() {
+	git switch $1 && ([[ $currentBranch = $1 ]] || saveCurrentBranch)
+}
+
+checkoutNew(){
+	git branch $1 && echo "Created new branch: $1"
+	checkoutOther $1
+}
+
+[[ -z $1 ]] && (checkoutLast; exit) || 
+	([[ $1 = "-b" ]] && (checkoutNew $2; exit) || checkoutOther $1)

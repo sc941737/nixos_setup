@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+remoteBranches=$(git branch --remote | grep -v "HEAD ->" | sed "s/origin\///")
+localBranches=$(git branch --list | grep -v "\*") # For some reason the git command includes the output of 'ls' when assigned to a variable. Grepping the content fixes the issue. Also grep removes the checked out branch here.
+
+removeOrShow(){
+	remove=$2
+	[[ "$remove" == "--show" ]] && echo "$1" || git branch -D "$1"
+}
+
+for localBranch in $localBranches; do
+	remove=true
+	for remoteBranch in $remoteBranches; do
+		[ "$localBranch" == "$remoteBranch" ] && remove=false
+	done
+	[[ $remove == true ]] && removeOrShow "$localBranch" "$1"
+done
