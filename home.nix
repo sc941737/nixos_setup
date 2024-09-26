@@ -227,7 +227,7 @@
 	    { name = "*.xlsx"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
 	    { name = "*.csv"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
 	    { name = "*.tsv"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
-	    { name = "*.odt"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
+	    { name = "*.ods"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
 	    # Documents 
 	    { name = "*.pdf"; use = [ "view_doc" "open_browser" "exif" "reveal" ]; }
 	    { name = "*.djvu"; use = [ "view_doc" "open_browser" "exif" "reveal" ]; }
