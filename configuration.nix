@@ -240,7 +240,6 @@ in
       so # TUI for StackOverflow and similar
       cargo # Rust package manager
       nodejs # JS package manager
-      jetbrains-toolbox # Jetbrains IDEs
       neovim # Text editor
       sbcl # Steel Bank Common Lisp
       clisp # GNU Common Lisp
@@ -255,6 +254,9 @@ in
       ani-cli # Anime client TUI
       mov-cli # Movies and series client TUI
       jan # Local GPT-like AI
+      androidStudioPackages.canary
+      jetbrains.jdk
+      jetbrains.idea-community
     ]);
   };
 
