@@ -56,11 +56,19 @@ in
     LC_TIME = "en_GB.UTF-8";
   };
 
-  # OpenGL setup
-  hardware.opengl.extraPackages = with pkgs; [
-    rocmPackages.clr.icd # OpenCL
-  ];
-  hardware.opengl.enable = true;
+  # Graphics setup
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd # OpenCL
+      amdvlk # Extra Vulkan drivers
+    ];
+  };
+  systemd.packages = with pkgs; [ lact ]; # AMD GPU tool
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
+  services.hardware.bolt.enable = true;
 
   virtualisation.docker.enable = true;
 
@@ -361,6 +369,8 @@ in
     xorg.xinit
     xorg.xinput
     glxinfo
+    pciutils
+    lact # AMD GPU tool
     gcc
     gnumake
   ];
