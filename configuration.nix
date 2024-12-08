@@ -39,7 +39,7 @@ in
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/London";
+  time.timeZone = "Europe/Rome";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -181,6 +181,7 @@ in
   };
 
   environment.variables = {
+    MANPAGER="nvim +Man!";
     GDK_SCALE = "2";
     GDK_DPI_SCALE = "0.5";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
@@ -265,6 +266,7 @@ in
       androidStudioPackages.canary
       jetbrains.jdk
       jetbrains.idea-community
+      jetbrains-toolbox
     ]);
   };
 
