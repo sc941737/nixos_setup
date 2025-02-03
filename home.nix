@@ -76,6 +76,7 @@
     sys-rebuild = "sudo nixos-rebuild switch --flake ~/repos/nixos_setup --impure";
     home-rebuild = "home-manager switch --flake ~/repos/nixos_setup --impure";
     full-rebuild = "sys-rebuild && home-rebuild";
+    nix-clean = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +2 && sudo nix-collect-garbage -d";
   };
 
   home.pointerCursor = {
