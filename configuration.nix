@@ -254,6 +254,10 @@ in
       clisp # GNU Common Lisp
       asdf # Common Lisp build system
       cl-launch # Common Lisp CLI launcher
+      jan # Local GPT-like AI
+      jetbrains.jdk
+      jetbrains.idea-community
+      jetbrains-toolbox
     ])
     ++ 
     (with pkgs-unstable; [
@@ -262,11 +266,7 @@ in
       ytfzf # YT client TUI
       ani-cli # Anime client TUI
       mov-cli # Movies and series client TUI
-      jan # Local GPT-like AI
       androidStudioPackages.canary
-      jetbrains.jdk
-      jetbrains.idea-community
-      jetbrains-toolbox
     ]);
   };
 
