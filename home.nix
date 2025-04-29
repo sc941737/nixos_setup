@@ -189,6 +189,16 @@
     yazi = {
       package = pkgs-unstable.yazi;
       enable = true;
+      keymap = {
+	manager.prepend_keymap = [
+	  { on = "f"; run = "search --via=fd"; }
+	  { on = "F"; run = "filter --smart"; }
+	  { on = "s"; run = "search --via=rg"; }
+	  { on = "S"; run = "search --via=rga"; }
+	  { on = "z"; run = "plugin zoxide"; }
+	  { on = "Z"; run = "plugin fzf"; }
+	];
+      };
       settings = {
 	manager = {
 	  mouse_events = [ "click" "scroll" "move" "drag" ];
@@ -244,8 +254,6 @@
 	  ];
 	};
       };
-      # keymaps = [
-      # ];
     };
     # Editor
     nixvim = {
