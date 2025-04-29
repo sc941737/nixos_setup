@@ -70,7 +70,9 @@ in
   systemd.services.lactd.wantedBy = ["multi-user.target"];
   services.hardware.bolt.enable = true;
 
-  virtualisation.docker.enable = true;
+  # Firmware updates
+  # Usage: sudo fwupdmgr refresh/get-updates/update
+  services.fwupd.enable = true;
 
   # Configure X11, DM, WM
   services.xserver = {
@@ -180,6 +182,10 @@ in
     localuser = null;
   };
 
+  services.emacs = {
+    enable = true;
+  };
+
   environment.variables = {
     MANPAGER="nvim +Man!";
     GDK_SCALE = "2";
@@ -254,6 +260,8 @@ in
       clisp # GNU Common Lisp
       asdf # Common Lisp build system
       cl-launch # Common Lisp CLI launcher
+      clojure # Clojure lang
+      leiningen # Clojure package management
       jan # Local GPT-like AI
       jetbrains.jdk
       jetbrains.idea-community
@@ -278,6 +286,7 @@ in
   environment.systemPackages = with pkgs; [
     # Basic utils
     nixFlakes
+    nix-prefetch-git
     kitty # Terminal with GPU acceleration
     udiskie
     vim_configurable 
@@ -396,12 +405,11 @@ in
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 
-    44001 # Docker Local AI
-  ];
+  # networking.firewall.allowedTCPPorts = [ 
+  # ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -226,6 +226,7 @@
 	  prepend_rules = [
 	    # Spreadsheets 
 	    { name = "*.xlsx"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
+	    { name = "*.xls"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
 	    { name = "*.csv"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
 	    { name = "*.tsv"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
 	    { name = "*.ods"; use = [ "sc-im" "visidata" "edit" "exif" "reveal" ]; }
@@ -364,6 +365,7 @@
 	})
       ];
       plugins = {
+	conjure.enable = true;
         lualine.enable = true; # Fancy indicators in nvim line
 	neorg = {
 	  enable = true;
@@ -458,8 +460,9 @@
     };
     # Document reader
     zathura = {
+      enable = true;
       options = {
-        selection_clipboard = "clipboard";
+        selection-clipboard = "clipboard";
       };
     };
     # Version control
